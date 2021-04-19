@@ -1,85 +1,152 @@
-var searchFunc = function (path, search_id, content_id) {
-    'use strict';
-    $.ajax({
-        url: path,
-        dataType: "xml",
-        success: function (xmlResponse) {
-            // get the contents from search data
-            var datas = $("entry", xmlResponse).map(function () {
-                return {
-                    title: $("title", this).text(),
-                    content: $("content", this).text(),
-                    url: $("url", this).text()
-                };
-            }).get();
-            var $input = document.getElementById(search_id);
-            var $resultContent = document.getElementById(content_id);
-            $input.addEventListener('input', function () {
-                var str = '<ul class=\"search-result-list\">';
-                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                $resultContent.innerHTML = "";
-                if (this.value.trim().length <= 0) {
-                    return;
-                }
-                // perform local searching
-                datas.forEach(function (data) {
-                    var isMatch = true;
-                    var content_index = [];
-                    var data_title = data.title.trim().toLowerCase();
-                    var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
-                    var data_url = data.url;
-                    var index_title = -1;
-                    var index_content = -1;
-                    var first_occur = -1;
-                    // only match artiles with not empty titles and contents
-                    if (data_title != '' && data_content != '') {
-                        keywords.forEach(function (keyword, i) {
-                            index_title = data_title.indexOf(keyword);
-                            index_content = data_content.indexOf(keyword);
-                            if (index_title < 0 && index_content < 0) {
-                                isMatch = false;
-                            } else {
-                                if (index_content < 0) {
-                                    index_content = 0;
-                                }
-                                if (i == 0) {
-                                    first_occur = index_content;
-                                }
-                            }
-                        });
-                    }
-                    // show search results
-                    if (isMatch) {
-                        str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
-                        var content = data.content.trim().replace(/<[^>]+>/g, "");
-                        if (first_occur >= 0) {
-                            // cut out 100 characters
-                            var start = first_occur - 20;
-                            var end = first_occur + 80;
-                            if (start < 0) {
-                                start = 0;
-                            }
-                            if (start == 0) {
-                                end = 100;
-                            }
-                            if (end > content.length) {
-                                end = content.length;
-                            }
-                            var match_content = content.substr(start, end);
-                            // highlight all keywords
-                            keywords.forEach(function (keyword) {
-                                var regS = new RegExp(keyword, "gi");
-                                match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
-                            });
+/**
+ * 搜索功能
+ **/
+( function () {
+  var dom = {
+    searchText: document.getElementById( "search-text" ),
+    searchBtn: document.getElementById("search-btn"),
+    searchClose: document.getElementById( "search-close" ),
+    searchWrapper: document.getElementById( "search-wrapper" ),
+    searchData: document.getElementById( "search-data" ),
+    searchFrom: document.getElementById( "search-from" ),
+  };
 
-                            str += "<p class=\"search-result\">" + match_content + "...</p>"
-                        }
-                        str += "</li>";
-                    }
-                });
-                str += "</ul>";
-                $resultContent.innerHTML = str;
-            });
+  // 禁止表单回车提交
+  dom.searchFrom.onsubmit = function ( event ) {
+    event.preventDefault();
+  };
+
+  // 搜索
+  dom.searchBtn.onclick = function () {
+    search( dom.searchText.value );
+  };
+
+  // 关闭
+  dom.searchClose.onclick = function () {
+    dom.searchData.style.display = "none";
+    dom.searchWrapper.innerHTML = "";
+  };
+
+
+  // ajax 加载数据
+  function loadData( callback ) {
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function () {
+      if ( xhr.readyState === 4 ) {
+        if ( ( xhr.status >= 200 && xhr.status < 300 ) || xhr.status === 304 ) {
+          callback( JSON.parse( xhr.responseText ) );
+        } else {
+          throw new Error( "Request was unsuccessful: " + xhr.status );
         }
-    });
-}
+      }
+    }
+
+    xhr.open( "get", "/content.json", true );
+    xhr.send( null );
+  }
+
+  // 注入
+  function render( dom, data ) {
+    var html = "",
+        tags = "",
+        categories = "";
+
+    data.forEach( function ( item ) {
+      tags = "";
+      categories = "";
+
+      if ( item.categories.length ) {
+        // 我这里只有考虑一个分类的情况，文章需要两个分类吗？
+        categories = '<a href="' + item.categories[ 0 ].permalink +
+        '" title="' + item.categories[ 0 ].slug +
+        '" class="post-categories">' + item.categories[ 0 ].name +
+        '</a>'
+      }
+
+      if ( item.tags.length ) {
+        item.tags.forEach( function ( item ) {
+          tags += '<a href="' + item.permalink +
+          '" title="' + item.slug +
+          '" class="post-tags"><i class="post-tags-icon iconfont icon-biaoqian"></i>' + item.name +
+          '</a>'
+        } );
+      }
+
+      html += '<section class="search-data-item"><h3 class="search-data-title"><a href="/' + item.path +
+        '" title="' + item.path +
+        '" class="search-data-link">' + item.title +
+        '</a></h3>' + '<p class="search-data-text">' + item.text +
+        '</p>' + '<p  class="post-meta">' + categories + tags +
+        '<span class="post-time">' + item.date.slice(0, 10) +
+        '</span></p></section>';
+    } );
+
+    dom.innerHTML = html;
+  }
+
+  // 去除左右空格
+  function trim( text ) {
+    var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+
+    return text == null ? "" : text.replace( rtrim, "" );
+  }
+
+  // 判断关键字
+  function match( post, regExp ) {
+    // 优先级 title > categories > tags > text
+    return regExp.test( post.title ) ||
+      ( post.categories && post.categories.some( function ( categorie ) {
+        return regExp.test( categorie.name );
+      } ) ) ||
+      ( post.tags && post.tags.some( function ( tag ) {
+        return regExp.test( tag.name );
+      } ) ) ||
+      regExp.test( post.text );
+  }
+
+  // 替换高亮文本，可以和注入合并，但是程序的扩展性和可读性那就真没了
+  function replace( data, regExp ) {
+    var key = null;
+
+    data.forEach( function ( post ) {
+      for ( key in post ) {
+        if ( key === "title" || key === "text" ) {
+          post[ key ] = ( post[ key ].match( regExp ) && post[ key ].replace( regExp, '<strong class="search-STRONG">' + RegExp.$1 + '</strong>' ) ) || post[ key ];
+        } else if ( key === "categories" || key === "tags" ) {
+          if ( post[ key ].length ) {
+            post[ key ].forEach( function ( item, index ) {
+              post[ key ][ index ].name = ( item.name.match( regExp ) && item.name.replace( regExp, '<strong class="search-STRONG">' + RegExp.$1 + '</strong>' ) ) || item.name;
+            } );
+          }
+        }
+      }
+    } );
+
+    return data;
+  }
+
+  // 借用了 jQuery 的数组内容判断函数
+  function inArray( elem, arr, i ) {
+    return arr == null ? -1 : Array.prototype.indexOf.call( arr, elem, i );
+  }
+
+  function search( key ) {
+    if ( key = trim( key ) ) {
+      var result = [],
+          regExp = new RegExp( "(" + key.replace( /\s/g, "|" ) + ")", "gmi" );
+
+      loadData( function ( data ) {
+        result = data.filter( function ( post ) {
+          return match( post, regExp );
+        } );
+
+        if ( result.length ) {
+          result = replace( result, regExp );
+          render( dom.searchWrapper, result );
+          dom.searchData.style.display = "block";
+        }
+      } );
+    }
+  }
+} )();

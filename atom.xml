@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Nap lovers</title>
+  
+  <subtitle>漫天星河不及你</subtitle>
+  <link href="https://dcher-blue.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://dcher-blue.github.io/"/>
+  <updated>2021-04-19T04:25:21.839Z</updated>
+  <id>https://dcher-blue.github.io/</id>
+  
+  <author>
+    <name>蓝色</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>链表</title>
+    <link href="https://dcher-blue.github.io/2021/04/15/%E9%93%BE%E8%A1%A8/"/>
+    <id>https://dcher-blue.github.io/2021/04/15/%E9%93%BE%E8%A1%A8/</id>
+    <published>2021-04-15T10:08:55.000Z</published>
+    <updated>2021-04-19T04:25:21.839Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h2><h4 id="什么是链表"><a href="#什么是链表" class="headerlink" title="什么是链表"></a>什么是链表</h4><p>链表是一种线性表，它不像是顺序表那样连续的存储数据，而是在每一个节点里存放下一个节点的地址</p><h4 id="为什么需要链表"><a href="#为什么需要链表" class="headerlink" title="为什么需要链表"></a>为什么需要链表</h4><p>顺序表的构建需要提前清楚数据大小来申请连续的空间，但是在进行扩充固定时候又需要进行数据的搬迁，所以使用起来不是很灵魂。<br>而链表的结构可以充分利用计算机内存空间，实现灵活的内存动态管理</p><p>ps: 需要注意的是链表必须有一个头结点来定位，最后一个节点为尾结点，尾结点所指向的是空</p><h4 id="单链表的实现"><a href="#单链表的实现" class="headerlink" title="单链表的实现"></a>单链表的实现</h4><h5 id="节点的实现"><a href="#节点的实现" class="headerlink" title="节点的实现"></a>节点的实现</h5><pre><code>class Node:    &quot;&quot;&quot;节点&quot;&quot;&quot;    def __init__(self, elem):        self.elem = elem        self.next = Noneclass Link_list(Node):    &quot;&quot;&quot;单链表&quot;&quot;&quot;    def __init__(self, node=None):        self._head = node    def is_empty(self):        &quot;&quot;&quot;链表是否空&quot;&quot;&quot;        return self._head == None    def length(self):        &quot;&quot;&quot;链表长度&quot;&quot;&quot;&quot;        cur = self._head  # 游标        count = 0  #记录数量        while cur != None:            count += 1            cur = cur.next        return count    def travel(self):        &quot;&quot;&quot;遍历整个链表&quot;&quot;&quot;        cur = self._head        while cur != None:            print(cur.elem)            cur = cur.next    def add(self, item):        &quot;&quot;&quot;链表头部添加元素&quot;&quot;&quot;    def append(self, item):        &quot;&quot;&quot;链表尾部添加元素&quot;&quot;&quot;        node = Node(item)        if self.is_empty():            self._head = node        else:            cur = self._head            while cur.next != None:                cur = cur.next            cur.next = node    def insert(self, pos, item):        &quot;&quot;&quot;指定位置添加&quot;&quot;&quot;    def remove(self, item):        &quot;&quot;&quot;删除节点&quot;&quot;&quot;    def search(self, item):        &quot;&quot;&quot;查找节点是否存在&quot;&quot;&quot;    </code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;链表&quot;&gt;&lt;a href=&quot;#链表&quot; class=&quot;headerlink&quot; title=&quot;链表&quot;&gt;&lt;/a&gt;链表&lt;/h2&gt;&lt;h4 id=&quot;什么是链表&quot;&gt;&lt;a href=&quot;#什么是链表&quot; class=&quot;headerlink&quot; title=&quot;什么是链表&quot;&gt;&lt;/a&gt;什么是链</summary>
+      
+    
+    
+    
+    
+    <category term="数据结构" scheme="https://dcher-blue.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python_x2</title>
+    <link href="https://dcher-blue.github.io/2021/03/22/python_x2/"/>
+    <id>https://dcher-blue.github.io/2021/03/22/python_x2/</id>
+    <published>2021-03-22T02:39:22.000Z</published>
+    <updated>2021-03-22T03:25:30.828Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="eval-和exec"><a href="#eval-和exec" class="headerlink" title="eval()和exec()"></a>eval()和exec()</h2><p>eval()和exec()功能有些相似，都可以执行一个字符串形式的python代码，相当于一个python解释器，区别在于eval()执行完要返回结果，而exec()执行完不返回结果。</p><h3 id="eval"><a href="#eval" class="headerlink" title="eval()"></a>eval()</h3><p>该函数用来计算指定表达式的值，需要注意的是eval不支持任何赋值操作且不能是复杂的代码逻辑，和lambda函数有点相似</p><h4 id="函数定义"><a href="#函数定义" class="headerlink" title="函数定义"></a>函数定义</h4><p><code>eval(expression, globals=None, locals=None)</code></p><h4 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h4><p><code>1 experssion:必选参数，可以是字符串，也可以是一个任意的code对象实例（可以通过compile函数创建）。如果它是一个字符串，它会被当作一个（使用globals和locals参数作为全局和本地命名空间的）Python表达式进行分析和解释</code></p><p><code>2 globals：可选参数，表示全局命名空间（存放全局变量），如果被提供，则必须是一个字典对象</code></p><p><code>3 locals：可选参数，表示当前局部命名空间（存放局部变量），如果被提供，可以是任何映射对象。如果该参数被忽略，那么它将会取与globals相同的值</code></p><p><code>ps:如果globals与locals都被忽略，那么它们将取eval()函数被调用环境下的全局命名空间和局部命名空间</code></p><h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">x &#x3D; 10</span><br><span class="line">def func():</span><br><span class="line">  y &#x3D; 20</span><br><span class="line">  a &#x3D; eval(&#39;x + y&#39;)</span><br><span class="line">  print(&#39;a: &#39;, a)</span><br><span class="line">  b &#x3D; eval(&#39;x + y&#39;, &#123;&#39;x&#39;: 1, &#39;y&#39;: 2&#125;)</span><br><span class="line">  print(&#39;b: &#39;, b)</span><br><span class="line">  c &#x3D; eval(&#39;x + y&#39;, &#123;&#39;x&#39;: 1, &#39;y&#39;: 2&#125;, &#123;&#39;y&#39;: 3, &#39;z&#39;: 4&#125;)</span><br><span class="line">  print(&#39;c: &#39;, c)</span><br><span class="line">  d &#x3D; eval(&#39;print(x, y)&#39;)</span><br><span class="line">  print(&#39;d: &#39;, d)</span><br><span class="line">func()</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>输出结果:<br>a:  30<br>b:  3<br>c:  4<br>10 20<br>d:  None</p><p>由上面的例子可以看出，首先对于变量a，eval的两个可选参数都被忽略了，所以变量x和变量y都用的是eval函数被调用环境下的作用域中的变量:x = 10, y = 20<br>对于变量b来说，eval函数提供了globals参数忽略了locals参数，因此locals会取globals参数的值：x = 1, y = 2  对于变量c，eval函数的两个可选参数都被提供了，那么eval函数会先从全部作用域globals中找到变量x，从局部作用域locals中找到变量y: x = 1, y = 3 而对于变量d来说，print函数没有结果，因此返回了一个None,这就是eval函数的简单应用</p><h3 id="exec"><a href="#exec" class="headerlink" title="exec()"></a>exec()</h3><p>用以动态执行python代码，可以执行相对较复杂的代码</p><h4 id="函数定义-1"><a href="#函数定义-1" class="headerlink" title="函数定义"></a>函数定义</h4><p>exec(object[, globals[, locals]])</p><h4 id="参数说明-1"><a href="#参数说明-1" class="headerlink" title="参数说明"></a>参数说明</h4><p><code>1 必选参数，表示需要被指定的Python代码。它必须是字符串或code对象。如果object是一个字符串，该字符串会先被解析为一组Python语句，然后在执行（除非发生语法错误）。如果object是一个code对象，那么它只是被简单的执行</code><br><code>2 可选参数，同eval函数</code><br><code>3 可选参数，同eval函数</code><br><code>4 需要注意的是exec函数的返回值永远都是None，而eval函数可以有返回值</code></p><h4 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h4><p>例1:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">x &#x3D; 10</span><br><span class="line">def func():</span><br><span class="line">  y &#x3D; 20</span><br><span class="line">  a &#x3D; exec(&#39;x + y&#39;)</span><br><span class="line">  print(&#39;a: &#39;, a)</span><br><span class="line">  b &#x3D; exec(&#39;x + y&#39;, &#123;&#39;x&#39;: 1, &#39;y&#39;: 2&#125;)</span><br><span class="line">  print(&#39;b: &#39;, b)</span><br><span class="line">  c &#x3D; exec(&#39;x + y&#39;, &#123;&#39;x&#39;: 1, &#39;y&#39;: 2&#125;, &#123;&#39;y&#39;: 3, &#39;z&#39;: 4&#125;)</span><br><span class="line">  print(&#39;c: &#39;, c)</span><br><span class="line">  d &#x3D; exec(&#39;print(x, y)&#39;)</span><br><span class="line">  print(&#39;d: &#39;, d)</span><br><span class="line">func()</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>输出结果:<br>a:  None<br>b:  None<br>c:  None<br>10 20<br>d:  None<br>结果是显而易见的，因为exec函数的返回值永远为None</p><p>例2：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">x &#x3D; 10</span><br><span class="line">expr &#x3D; &quot;&quot;&quot;</span><br><span class="line">z &#x3D; 30</span><br><span class="line">sum &#x3D; x + y + z</span><br><span class="line">print(sum)</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">def func():</span><br><span class="line">  y &#x3D; 20</span><br><span class="line">  exec(expr)</span><br><span class="line">  exec(expr, &#123;&#39;x&#39;: 1, &#39;y&#39;: 2&#125;)</span><br><span class="line">  exec(expr, &#123;&#39;x&#39;: 1, &#39;y&#39;: 2&#125;, &#123;&#39;y&#39;: 3, &#39;z&#39;: 4&#125;)</span><br><span class="line">func()</span><br></pre></td></tr></table></figure><p>输出结果:<br>60<br>33<br>34</p><p>对于前两个数值应该不需要想，关于最后一个输出的34，首先可以看出：x = 1, y = 3是肯定没什么问题的，争议就在z的取值为什么是30而不是4，梳理一下代码的执行过程就好了如下:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">x &#x3D; 1</span><br><span class="line">y &#x3D; 2</span><br><span class="line">def func():</span><br><span class="line">  y &#x3D; 3</span><br><span class="line">  z &#x3D; 4</span><br><span class="line">  z &#x3D; 30</span><br><span class="line">  sum &#x3D; x + y + z</span><br><span class="line">  print(sum)</span><br><span class="line">func()</span><br></pre></td></tr></table></figure><p>因此最后得出的结果应是34</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;eval-和exec&quot;&gt;&lt;a href=&quot;#eval-和exec&quot; class=&quot;headerlink&quot; title=&quot;eval()和exec()&quot;&gt;&lt;/a&gt;eval()和exec()&lt;/h2&gt;&lt;p&gt;eval()和exec()功能有些相似，都可以执行一个字符串形式</summary>
+      
+    
+    
+    
+    
+    <category term="python_def" scheme="https://dcher-blue.github.io/tags/python-def/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python_pygame_1</title>
+    <link href="https://dcher-blue.github.io/2021/03/20/python_pygame_1/"/>
+    <id>https://dcher-blue.github.io/2021/03/20/python_pygame_1/</id>
+    <published>2021-03-20T08:26:44.000Z</published>
+    <updated>2021-03-20T14:51:05.963Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="pygame的display模块"><a href="#pygame的display模块" class="headerlink" title="pygame的display模块"></a>pygame的display模块</h2><p>pygame.display是Pygame中用于控制窗口和屏幕显示的模块</p><h4 id="pygame-display-set-mode"><a href="#pygame-display-set-mode" class="headerlink" title="pygame.display.set_mode()"></a>pygame.display.set_mode()</h4><p>用以初始化一个准备显示的窗口或屏幕，set_mode(size=(0,0), flage=0, depth=0, display=0)-&gt;Surface<br><code>1 size参数如果未设置就默认为(0,0)那么创建的Surface将具有与当前屏幕分辨率相同的大小。如果只有宽度或高度设置为0，那么Surface的对应参数将与屏幕分辨率相同</code></p><h4 id="pygame-display-set-caption"><a href="#pygame-display-set-caption" class="headerlink" title="pygame.display.set_caption()"></a>pygame.display.set_caption()</h4><p>这个方法是用以设置当前窗口标题, set_caption(title,icontitle=None)-&gt;None，如果要获得显示Surface的标题和图标(这些值通常都是相同的)，可以使用get_caption()方法。</p><h4 id="pygame-display-set-icon"><a href="#pygame-display-set-icon" class="headerlink" title="pygame.display.set_icon()"></a>pygame.display.set_icon()</h4><p><code>1 设置系统用来表示显示窗口的运行时的图标。所有窗口默认为窗口图标的简单Pygame徽标</code><br><code>2 需要注意的是某些系统不允许窗口图标在显示后更改。此函数可以在set_mode()方法前调用，以便在设置显示模式之前创建图标</code></p><h2 id="pygame-mixer-music"><a href="#pygame-mixer-music" class="headerlink" title="pygame.mixer.music"></a>pygame.mixer.music</h2><p>在pygame中控制音频流的模块</p><h4 id="pygame-mixer-music-get-busy"><a href="#pygame-mixer-music-get-busy" class="headerlink" title="pygame.mixer.music.get_busy()"></a>pygame.mixer.music.get_busy()</h4><p>用以检查音乐是否正在播放，返回值是一个bool类型 如果返回True则正在播放，相反音乐空闲，需要注意的是<code>即使音乐暂停也会返回True</code></p><h4 id="pygame-mixer-music-play"><a href="#pygame-mixer-music-play" class="headerlink" title="pygame.mixer.music.play()  "></a>pygame.mixer.music.play()  </h4><p>开始播放已加载的音乐流, play(loops=0, start=0.0, fade_ms = 0)  </p><p><code>1 loop(int)-- 重复音乐的次数，需要注意的是设置为-1可使音乐不确定地重复</code><br><code>2 start(float)-- 音乐开始播放的位置，起始位置取决于播放的音乐格式：MP3和OGG使用该位置为时间(秒)</code><br><code>3 fade_ms(int)-- 使音乐在给定时间内开始以0音量播放并淡入到最大音量</code></p><h4 id="music模块方法的简介"><a href="#music模块方法的简介" class="headerlink" title="music模块方法的简介"></a>music模块方法的简介</h4><p><code>pygame.mixer.music.load()  ——  载入一个音乐文件用于播放 pygame.mixer.music.rewind()  ——  重新开始播放音乐 pygame.mixer.music.stop()  ——  结束音乐播放 pygame.mixer.music.pause()  ——  暂停音乐播放 pygame.mixer.music.unpause()  ——  恢复音乐播放 pygame.mixer.music.fadeout()  ——  淡出的效果结束音乐播放 pygame.mixer.music.set_volume()  ——  设置音量 pygame.mixer.music.get_volume()  ——  获取音量 pygame.mixer.music.set_pos()  ——  设置播放的位置 pygame.mixer.music.get_pos()  ——  获取播放的位置 pygame.mixer.music.queue()  ——  将一个音乐文件放入队列中，并排在当前播放的音乐之后 pygame.mixer.music.set_endevent()  ——  当播放结束时发出一个事件 pygame.mixer.music.get_endevent()  ——  获取播放结束时发送的事件</code></p><h2 id="pygame-mixer-Sound"><a href="#pygame-mixer-Sound" class="headerlink" title="pygame.mixer.Sound"></a>pygame.mixer.Sound</h2><p>可以从文件或缓冲区对象中创建新的声音对象，参考Sound(filename)</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;pygame的display模块&quot;&gt;&lt;a href=&quot;#pygame的display模块&quot; class=&quot;headerlink&quot; title=&quot;pygame的display模块&quot;&gt;&lt;/a&gt;pygame的display模块&lt;/h2&gt;&lt;p&gt;pygame.display</summary>
+      
+    
+    
+    
+    
+    <category term="pygame" scheme="https://dcher-blue.github.io/tags/pygame/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python_pygame</title>
+    <link href="https://dcher-blue.github.io/2021/03/05/python_pygame/"/>
+    <id>https://dcher-blue.github.io/2021/03/05/python_pygame/</id>
+    <published>2021-03-05T12:26:45.000Z</published>
+    <updated>2021-03-20T08:27:42.845Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="对图像进行翻转，缩放，旋转-transform模块的使用"><a href="#对图像进行翻转，缩放，旋转-transform模块的使用" class="headerlink" title="对图像进行翻转，缩放，旋转 transform模块的使用"></a>对图像进行翻转，缩放，旋转 transform模块的使用</h2><h4 id="翻转"><a href="#翻转" class="headerlink" title="翻转"></a>翻转</h4><p>pygame.transform.flip(Surface, xbool, ybool)<br><code>1 xbool =&gt; True 为水平翻转</code><br><code>2 ybool =&gt; True 为垂直翻转</code><br><code>3 return Surface</code></p><h4 id="缩放"><a href="#缩放" class="headerlink" title="缩放"></a>缩放</h4><p>pygame.transform.scale(Surface, (width, height), DestSurface = None)<br><code>1 (width, height): 缩放的大小</code><br><code>2 returnSurface</code></p><h4 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a>旋转</h4><p>pygame.transform.rotate(Surface, angle)<br><code>1 angle: 旋转角度</code><br><code>2 return Surface</code></p><h2 id="pygame的init"><a href="#pygame的init" class="headerlink" title="pygame的init()"></a>pygame的init()</h2><h4 id="init-是做什么的"><a href="#init-是做什么的" class="headerlink" title="init()是做什么的"></a>init()是做什么的</h4><p>在python的面向对象中有__init__，其实在Pygame这个特殊的python模块中的init()与前者作用差不多:初始化<br>在使用pygame这个模块以前，需要检查一次这个模块是否完整，能不能提供正常的方法，而这个检查的动作就是init()</p><h4 id="init-检查了什么"><a href="#init-检查了什么" class="headerlink" title="init()检查了什么"></a>init()检查了什么</h4><p>我在命令行中执行了下面这小段代码</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import pygame</span><br><span class="line"></span><br><span class="line">pygame.init()</span><br></pre></td></tr></table></figure><p>他却给我返回了一个元组(7,0),在查阅了官方文档以后,大致了解了<br>`Initialize all imported pygame modules. No exceptions will be raised if a module fails, but the total number if successful and failed inits will be returned as a tuple. You can always initialize individual modules manually, but pygame.init() is a convenient way to get everything started. The init() functions for individual modules will raise exceptions when they fail.</p><p>You may want to initialize the different modules separately to speed up your program or to not use things your game does not.</p><p>It is safe to call this init() more than once: repeated calls will have no effect. This is true even if you have pygame.quit() all the modules.<br>初始化所有导入的pygame模块。如果模块失败，将不会引发异常，但如果成功和失败的inits总数将作为元组返回。您总是可以手动初始化单个模块，但是pygame.init()是一种启动一切的方便方法。单个模块的init()函数在失败时会引发异常。</p><p>你可能想要分别初始化不同的模块来加速你的程序，或者不使用你的游戏没有的东西。</p><p>多次调用此init()是安全的:重复调用不会有任何效果。即使您拥有pygame.quit()所有模块，也是如此。`</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;对图像进行翻转，缩放，旋转-transform模块的使用&quot;&gt;&lt;a href=&quot;#对图像进行翻转，缩放，旋转-transform模块的使用&quot; class=&quot;headerlink&quot; title=&quot;对图像进行翻转，缩放，旋转 transform模块的使用&quot;&gt;&lt;/a&gt;对图</summary>
+      
+    
+    
+    
+    
+    <category term="pygame" scheme="https://dcher-blue.github.io/tags/pygame/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python_dict</title>
+    <link href="https://dcher-blue.github.io/2021/03/01/python_x1/"/>
+    <id>https://dcher-blue.github.io/2021/03/01/python_x1/</id>
+    <published>2021-03-01T11:03:10.000Z</published>
+    <updated>2021-03-30T11:26:35.522Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="什么是字典"><a href="#什么是字典" class="headerlink" title="什么是字典?"></a>什么是字典?</h2><p>以键值对的形式进行存放，格式是{key:value},同样的key必须是immutable的对象，每个key都对应一个value，如下所示:<br><code>score = &#123;&#39;zs&#39;:99, &#39;ls&#39;:98, &#39;ww&#39;:97&#125;</code></p><h3 id="字典的创建"><a href="#字典的创建" class="headerlink" title="字典的创建"></a>字典的创建</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">s &#x3D; &#123;&#39;ls&#39;:99, &#39;zs&#39;:98, &#39;ww&#39;:100&#125;</span><br><span class="line">s &#x3D; dict()</span><br><span class="line">s &#x3D; &#123;&#125;</span><br><span class="line">s &#x3D; dict([&#39;ls&#39;,99], [&#39;zs&#39;,98])</span><br></pre></td></tr></table></figure><p>以上是创建字典的几种方式，需要注意的如果想把其他对象转换成dict那么该对象必须是<code>包含成对的数据的iterable</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; [&#39;zs&#39;, &#39;ls&#39;, &#39;ww&#39;]</span><br><span class="line">scores &#x3D; [99, 98, 100]</span><br><span class="line">s &#x3D; dict(zip(names, scores)) </span><br></pre></td></tr></table></figure><p>输出:{‘zs’: 99, ‘ls’: 98, ‘ww’: 100}</p><p>如上所示，如果有两组数据也可以使用zip方法来合并两组数据组成字典</p><p>如果只有了key却没有value那么可以使用fromkeys方法来生成一个value为None的字典<code>s = dict.fromkeys(names)</code></p><h3 id="字典的增加和删除"><a href="#字典的增加和删除" class="headerlink" title="字典的增加和删除"></a>字典的增加和删除</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; &#123;&#39;ls&#39;:98&#125;</span><br><span class="line">names[&#39;ww&#39;] &#x3D; 97 #增加数据</span><br><span class="line">del names[&#39;ls&#39;] #删除数据</span><br><span class="line">names.pop(&#39;ls&#39;) #使用pop删除(提取)</span><br><span class="line">names.poitem() #随机删除</span><br><span class="line">names.clear() #清空</span><br></pre></td></tr></table></figure><h3 id="字典的更改和查找"><a href="#字典的更改和查找" class="headerlink" title="字典的更改和查找"></a>字典的更改和查找</h3><p>直接通过<code>key</code>来更改<code>names[&#39;ls&#39;] = 99</code><br>查找:<br>①<code>names[&#39;ls&#39;]</code>直接通过key来访问value<br>②<code>names.get(&#39;ls&#39;)</code>使用get方法来访问，如果不存在会返回一个None<br>可以为字典中不存在的数据设置一个默认值，只要访问这个key就会返回这个默认值<br><code>names.setdefault(&#39;lg&#39;,&#39;yeah&#39;)</code></p><h3 id="字典的操作"><a href="#字典的操作" class="headerlink" title="字典的操作"></a>字典的操作</h3><h4 id="字典的遍历"><a href="#字典的遍历" class="headerlink" title="字典的遍历"></a>字典的遍历</h4><p>可以使用for循环直接遍历，但是需要注意的是字典是键值对访问的是key而不是value如果想要同时访问value需要使用以下方式:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for k in names:</span><br><span class="line">print(k, names[k])</span><br></pre></td></tr></table></figure><p>可以使用keys方法来访问dict中所有的key值，也可以使用values来访问所有values，甚至可以使用items来将字典转换成列表，如下所示</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; &#123;&#39;ls&#39;:99,&#39;ww&#39;:97&#125;</span><br><span class="line">print(names.items())</span><br></pre></td></tr></table></figure><p>输出:dict_items([(‘ls’, 99), (‘ww’, 97)])</p><h3 id="字典的排序"><a href="#字典的排序" class="headerlink" title="字典的排序"></a>字典的排序</h3><h4 id="dict按照key来排序"><a href="#dict按照key来排序" class="headerlink" title="dict按照key来排序"></a>dict按照key来排序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; &#123;&#39;ls&#39;:99, &#39;ww&#39;:97, &#39;zs&#39;:100&#125;</span><br><span class="line">s &#x3D; &#123;k:v for k,v in sorted(names.items())&#125;</span><br></pre></td></tr></table></figure><p>如上所示，是按照了key来排序，首先通过items将dict转换成一个列表的形式，然后使用sorted来进行排序生成一个新的列表，最后用k，v两个参数提取出列表中的key和value生成一个新字典</p><h4 id="dict按照value来排序"><a href="#dict按照value来排序" class="headerlink" title="dict按照value来排序"></a>dict按照value来排序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; &#123;&#39;ls&#39;:99, &#39;ww&#39;:97, &#39;zs&#39;:140&#125;</span><br><span class="line">s &#x3D; sorted(names.items(), key&#x3D;lambda n:n[1])</span><br><span class="line">g &#x3D; &#123;k:v for k,v in s&#125;</span><br><span class="line">print(g)</span><br></pre></td></tr></table></figure><p>和按照key来排序的方式相似，首先想要排序那么就要使用itmes方法来将字典转换为一个可排序的list，然后通过sorted方法进行排序，最后生成一个新的dict</p><h3 id="字典的复制"><a href="#字典的复制" class="headerlink" title="字典的复制"></a>字典的复制</h3><p>字典也可以使用copy进行复制,需要注意的是这里使用copy是生成了一个新字典，地址不同</p><h3 id="update"><a href="#update" class="headerlink" title="update"></a>update</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; &#123;&#39;ls&#39;:99, &#39;ww&#39;:97, &#39;zs&#39;:140&#125;</span><br><span class="line">s &#x3D; &#123;&#39;sf&#39;:99, &#39;zc&#39;:98, &#39;jh&#39;:100, &#39;zs&#39;:150&#125;</span><br><span class="line">s.update(names)</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure><p>输出:<code>&#123;&#39;sf&#39;: 99, &#39;zc&#39;: 98, &#39;jh&#39;: 100, &#39;zs&#39;: 140, &#39;ls&#39;: 99, &#39;ww&#39;: 97&#125;</code></p><p>如上所示，update方法是将一个字典内所有内容全部传入另一个字典，如果要传入的字典中有相同key那么会将其覆盖</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;什么是字典&quot;&gt;&lt;a href=&quot;#什么是字典&quot; class=&quot;headerlink&quot; title=&quot;什么是字典?&quot;&gt;&lt;/a&gt;什么是字典?&lt;/h2&gt;&lt;p&gt;以键值对的形式进行存放，格式是{key:value},同样的key必须是immutable的对象，每个key都对</summary>
+      
+    
+    
+    
+    
+    <category term="python_ds" scheme="https://dcher-blue.github.io/tags/python-ds/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python_set</title>
+    <link href="https://dcher-blue.github.io/2021/03/01/python_x/"/>
+    <id>https://dcher-blue.github.io/2021/03/01/python_x/</id>
+    <published>2021-03-01T08:56:06.000Z</published>
+    <updated>2021-03-30T11:26:46.081Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="什么是set"><a href="#什么是set" class="headerlink" title="什么是set"></a>什么是set</h3><p>set不能重复，不分先后，只能加入immutable的内容</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; &#123;&#39;zs&#39;, &#39;lisi&#39;, &#39;zs&#39;&#125;</span><br><span class="line">print(name)</span><br></pre></td></tr></table></figure><p>输出:{‘lisi’, ‘zs’}</p><p>这个例子显示出了set的前两个特性，第三个特性举个简单的例子如果再上述集合中加入了一个list[3,4]那么最后输出就会报错，因为list是可变的</p><h3 id="集合的创建"><a href="#集合的创建" class="headerlink" title="集合的创建"></a>集合的创建</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; set&#123;&#125;</span><br><span class="line">names &#x3D; &#123;1,2,3,4,5&#125;</span><br><span class="line">names &#x3D; set([4,5,6])</span><br></pre></td></tr></table></figure><p>上述是几种集合建立的方式，需要注意的是第三种将其他转化为集合只能转化iterable的对象</p><h3 id="集合的增加"><a href="#集合的增加" class="headerlink" title="集合的增加"></a>集合的增加</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; &#123;3,4&#125;</span><br><span class="line">names.add(&#39;5&#39;)</span><br></pre></td></tr></table></figure><p>集合的增加很简单直接使用add方法直接添加元素就行.</p><h3 id="集合的删除"><a href="#集合的删除" class="headerlink" title="集合的删除"></a>集合的删除</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; &#123;3,4,5&#125;</span><br><span class="line">names.remove(&#39;3&#39;)</span><br><span class="line">names.discard(&#39;4&#39;)</span><br><span class="line">names.clear()</span><br></pre></td></tr></table></figure><p>上述例子中有三种删除方式，使用remove可以删除但是如果不存在删除元素会报错，而discard有就删除，没有就什么都不会发生，clear则是清空</p><h3 id="集合的查询"><a href="#集合的查询" class="headerlink" title="集合的查询"></a>集合的查询</h3><p>集合的查询也是使用<code>in</code>和<code>not in</code>来查询，如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; &#123;3,4,5&#125;</span><br><span class="line">print(6 not in names)</span><br></pre></td></tr></table></figure><p>还有pop也可以用来查询，其实不如说是提取出一个元素</p><h3 id="集合的操作"><a href="#集合的操作" class="headerlink" title="集合的操作"></a>集合的操作</h3><p>几种集合的操作很早就学过了比如并，交等。如下所示:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">s1 &#x3D; &#123;1,2,3,4,5&#125;</span><br><span class="line">s2 &#x3D; &#123;2,4,5,6&#125;</span><br><span class="line">s3 &#x3D; s1 | s2 #∪</span><br><span class="line">s3 &#x3D; s1.union(s2) #∪</span><br><span class="line">s3 &#x3D; s1 &amp; s2 #∩</span><br><span class="line">s3 &#x3D; s1.intersection(s2)</span><br><span class="line">s3 &#x3D; s1 - s2</span><br><span class="line">s3 &#x3D; s1 ^ s2 #只在s1或者s2中</span><br><span class="line">print(s1.issuperset(s2)) # 比较 或者使用s1 &gt; s2也可以</span><br></pre></td></tr></table></figure><p>除了以上操作以外还有复制操作:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; &#123;1,2,3&#125;</span><br><span class="line">s &#x3D; names.copy()</span><br></pre></td></tr></table></figure><p>注意使用copy复制的时候其实只是复制了地址，指向的是同一个对象</p><h3 id="frozenset"><a href="#frozenset" class="headerlink" title="frozenset"></a>frozenset</h3><p>这是一种特殊的set类型，是不可以改变的</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;什么是set&quot;&gt;&lt;a href=&quot;#什么是set&quot; class=&quot;headerlink&quot; title=&quot;什么是set&quot;&gt;&lt;/a&gt;什么是set&lt;/h3&gt;&lt;p&gt;set不能重复，不分先后，只能加入immutable的内容&lt;/p&gt;
+&lt;figure class=&quot;highl</summary>
+      
+    
+    
+    
+    
+    <category term="python_ds" scheme="https://dcher-blue.github.io/tags/python-ds/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python_str</title>
+    <link href="https://dcher-blue.github.io/2021/02/28/python_9/"/>
+    <id>https://dcher-blue.github.io/2021/02/28/python_9/</id>
+    <published>2021-02-28T11:20:08.000Z</published>
+    <updated>2021-03-30T11:27:01.453Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="什么是字符串"><a href="#什么是字符串" class="headerlink" title="什么是字符串"></a>什么是字符串</h2><p>字符串是一个字符序列(sequence), 基于utf-8编码</p><h3 id="字符串的创建"><a href="#字符串的创建" class="headerlink" title="字符串的创建"></a>字符串的创建</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">zs &#x3D; &#39;张三&#39;</span><br><span class="line">ls &#x3D; &quot;李四&quot;</span><br><span class="line">ww &#x3D; &#39;&#39;&#39;王五&#39;&#39;&#39;</span><br></pre></td></tr></table></figure><p>在python中单引号和双引号区别不大，可以互相嵌套，如果使用三引号那么引号内的内容可以随意</p><h3 id="字符串的拼接"><a href="#字符串的拼接" class="headerlink" title="字符串的拼接"></a>字符串的拼接</h3><p>字符串也是immutable，但是字符串可以通过切片进行’更改’,也就是拼接，并且同一个字符串在系统中只有一个</p><h3 id="字符串的查询"><a href="#字符串的查询" class="headerlink" title="字符串的查询"></a>字符串的查询</h3><h4 id="通过下标来访问"><a href="#通过下标来访问" class="headerlink" title="通过下标来访问"></a>通过下标来访问</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nums &#x3D; &#39;12345&#39;</span><br><span class="line">print(nums[1])</span><br></pre></td></tr></table></figure><p>和列表元组一样直接通过下标来访问，包括in not in也都可以在字符串中使用,is和is not 和in not in用处差不多 都会返回一个True或者False</p><h4 id="判定字符串的开始和结尾-下标"><a href="#判定字符串的开始和结尾-下标" class="headerlink" title="判定字符串的开始和结尾,下标"></a>判定字符串的开始和结尾,下标</h4><p><code>开始</code><br>print(nums.startswith(‘1’))</p><p><code>结尾</code><br>print(nums.endwith(‘5’))</p><p><code>下标</code><br>print(nums.index(‘3’))</p><h3 id="格式化输出"><a href="#格式化输出" class="headerlink" title="格式化输出"></a>格式化输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name &#x3D; &#39;zhangsan&#39;</span><br><span class="line">print(f&#39;hello,&#123;name&#125;&#39;)</span><br></pre></td></tr></table></figure><p>已经学习过了卜多写了</p><h3 id="字符串的拆分与合并"><a href="#字符串的拆分与合并" class="headerlink" title="字符串的拆分与合并"></a>字符串的拆分与合并</h3><h4 id="字符串的拆分"><a href="#字符串的拆分" class="headerlink" title="字符串的拆分"></a>字符串的拆分</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; &#39;张三，李四，王五&#39;</span><br><span class="line">for n in names.split(&#39;，&#39;):</span><br><span class="line">print(n)</span><br></pre></td></tr></table></figure><p>可以使用split方法来规定分隔的字符来分割字符串</p><h4 id="字符串的合并"><a href="#字符串的合并" class="headerlink" title="字符串的合并"></a>字符串的合并</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">h &#x3D; &#39; hello &#39;</span><br><span class="line">names &#x3D; [&#39;张三&#39;, &#39;李四&#39;, &#39;王五&#39;]</span><br><span class="line">print(h.join(names))</span><br></pre></td></tr></table></figure><p>输出:张三 hello 李四 hello 王五</p><p>如上例使用了join方法来进行h和names字符串的合并，需要注意的是如果这里names没有写成列表的形式而是变成了一个字符串那么就会出现每个字符之间都会出现一个’hello’的情况</p><h3 id="字符串的查找"><a href="#字符串的查找" class="headerlink" title="字符串的查找"></a>字符串的查找</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name &#x3D; &#39;今天是第一一一一一一天&#39;</span><br><span class="line">print(name.count(&#39;一&#39;))</span><br></pre></td></tr></table></figure><p>输出:6<br>可以使用count方法来统计某个字符的出现次数</p><h3 id="字符串改变大小写"><a href="#字符串改变大小写" class="headerlink" title="字符串改变大小写"></a>字符串改变大小写</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; &#39;zhang san is good boy&#39;</span><br><span class="line">name &#x3D; &#39;zhangsan&#39;</span><br><span class="line">print(names.title())</span><br><span class="line">print(name.title())</span><br></pre></td></tr></table></figure><p>输出:Zhang San Is Good Boy<br>Zhangsan</p><p>如上，如果一段字母字符串没有用不同类型的字符分隔开那么使用title方法只会改变起始的大小写，分隔开了则会改变每次分隔开的起始大小写，还有以下几种<br><code>capitalize方法可以大写字符串中第一个字符</code><br><code>upper方法是用来大写所有字符串</code><br><code>lower方法使用来小写所有字符串</code><br><code>swapcase方法是用来转换大小写</code></p><h3 id="字符串去空格"><a href="#字符串去空格" class="headerlink" title="字符串去空格"></a>字符串去空格</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; &#39; wangwu &#39;</span><br><span class="line">print(names.strip())</span><br><span class="line">print(names.lstrip())</span><br><span class="line">print(names.rstrip())</span><br></pre></td></tr></table></figure><p>输出:wangwu<br>wangwu<br> wangwu</p><p> 如上所示strip是一个去空格的方法</p><h3 id="字符串的替换"><a href="#字符串的替换" class="headerlink" title="字符串的替换"></a>字符串的替换</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; &#39;今天是第一一一一一一天&#39;</span><br><span class="line">print(names.replace(&#39;一&#39;,&#39;二&#39;))</span><br></pre></td></tr></table></figure><p>replace方法是用来替换字符串中的字符的</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;什么是字符串&quot;&gt;&lt;a href=&quot;#什么是字符串&quot; class=&quot;headerlink&quot; title=&quot;什么是字符串&quot;&gt;&lt;/a&gt;什么是字符串&lt;/h2&gt;&lt;p&gt;字符串是一个字符序列(sequence), 基于utf-8编码&lt;/p&gt;
+&lt;h3 id=&quot;字符串的创建&quot;&gt;&lt;a</summary>
+      
+    
+    
+    
+    
+    <category term="python_ds" scheme="https://dcher-blue.github.io/tags/python-ds/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python_tuple</title>
+    <link href="https://dcher-blue.github.io/2021/02/28/python_8/"/>
+    <id>https://dcher-blue.github.io/2021/02/28/python_8/</id>
+    <published>2021-02-28T10:59:00.000Z</published>
+    <updated>2021-03-30T11:27:08.036Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h2><h3 id="什么是元组"><a href="#什么是元组" class="headerlink" title="什么是元组"></a>什么是元组</h3><p>元组是一个有序的，不可改的数据结构(immutable)<br>l = [5,3,4] #list<br>n = (5,3,4) #tuple</p><p><code>元组的优点:1.快 2.安全 3.元组可以被称为dict的key</code><br><code>使用元组:1.传参的时候 2.其他不变的情况</code></p><h3 id="元组-建立"><a href="#元组-建立" class="headerlink" title="元组-建立"></a>元组-建立</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">t1 &#x3D; (5,3,9)</span><br><span class="line">t2 &#x3D; tuple([4,7,2])</span><br><span class="line">t3 &#x3D; tuple(&#39;python&#39;)</span><br><span class="line">t4 &#x3D; tuple(1,)</span><br></pre></td></tr></table></figure><p>这个例子中t1是直接建立了一个元组，t2和t3则是将列表和字符串转换成元组，t4这里要注意如果想要建立单个元素的元组不可以直接<code>t = (5)</code>如果使用了type会发现这时的t是int类型而不是元组，所以想建立单元素元组必须用上面这个方法</p><h3 id="元组-查"><a href="#元组-查" class="headerlink" title="元组-查"></a>元组-查</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">t &#x3D; (5, 3, 4)</span><br><span class="line">print(t[1])</span><br></pre></td></tr></table></figure><p>直接进行按下标查询元组即可</p><h3 id="元组-切片"><a href="#元组-切片" class="headerlink" title="元组-切片"></a>元组-切片</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">t &#x3D; (5, 3, 4)</span><br><span class="line">s &#x3D; t[0:2] </span><br></pre></td></tr></table></figure><p>切片的方法全部跟list相同</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;元组&quot;&gt;&lt;a href=&quot;#元组&quot; class=&quot;headerlink&quot; title=&quot;元组&quot;&gt;&lt;/a&gt;元组&lt;/h2&gt;&lt;h3 id=&quot;什么是元组&quot;&gt;&lt;a href=&quot;#什么是元组&quot; class=&quot;headerlink&quot; title=&quot;什么是元组&quot;&gt;&lt;/a&gt;什么是元</summary>
+      
+    
+    
+    
+    
+    <category term="python_ds" scheme="https://dcher-blue.github.io/tags/python-ds/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python_list</title>
+    <link href="https://dcher-blue.github.io/2021/02/28/python_7/"/>
+    <id>https://dcher-blue.github.io/2021/02/28/python_7/</id>
+    <published>2021-02-28T08:49:53.000Z</published>
+    <updated>2021-03-30T11:27:25.501Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="列表-修改元素"><a href="#列表-修改元素" class="headerlink" title="列表-修改元素"></a>列表-修改元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; [&#39;5&#39;, &#39;4&#39;, &#39;3&#39;]</span><br><span class="line">names[1] &#x3D; &#39;2&#39;</span><br><span class="line">print(names)</span><br></pre></td></tr></table></figure><p>输出:[‘5’, ‘2’, ‘3’]<br>可以直接通过列表的下标对列表中的元素进行修改，list保存的是实际对象的地址，修改只是指向了要修改对象的新地址</p><h3 id="列表-查询元素"><a href="#列表-查询元素" class="headerlink" title="列表-查询元素"></a>列表-查询元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; [&#39;5&#39;, &#39;4&#39;, &#39;3&#39;]</span><br><span class="line">print(names[1])</span><br><span class="line">print(names.index(&#39;4&#39;))</span><br></pre></td></tr></table></figure><p>输出:4<br>1<br>如果已知元素下标可以直接通过下标进行查询输出，如果已知元素，可以通过index方法来查询已知元素的下标，同样的如果为了防止下标越界情况的发生，可以使用in或not in方法</p><h3 id="列表-元素遍历"><a href="#列表-元素遍历" class="headerlink" title="列表-元素遍历"></a>列表-元素遍历</h3><h4 id="使用for来遍历列表"><a href="#使用for来遍历列表" class="headerlink" title="使用for来遍历列表"></a>使用for来遍历列表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; [5, 4, 3]</span><br><span class="line">for n in names:</span><br><span class="line">print(&#39;yes, &#39;, n)</span><br></pre></td></tr></table></figure><p>输出: yes,  5<br>yes,  4<br>yes,  3</p><h4 id="enumerate函数来遍历"><a href="#enumerate函数来遍历" class="headerlink" title="enumerate函数来遍历"></a>enumerate函数来遍历</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; [5, 4, 3]</span><br><span class="line">for index,n in enumerate(names):</span><br><span class="line">print(f&#39;num:&#123;index&#125; is &#123;n&#125;&#39;)</span><br></pre></td></tr></table></figure><p>输出:num:0 is 5<br>num:1 is 4<br>num:2 is 3</p><p>enumerate函数会返回一对数据，分别是元素的下标和元素本身</p><h3 id="列表-排序和倒置"><a href="#列表-排序和倒置" class="headerlink" title="列表-排序和倒置"></a>列表-排序和倒置</h3><h4 id="对原列表进行排序"><a href="#对原列表进行排序" class="headerlink" title="对原列表进行排序"></a>对原列表进行排序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; [4, 5, 3]</span><br><span class="line">names.reverse()</span><br><span class="line">print(names)</span><br><span class="line">names.sort()</span><br><span class="line">print(names)</span><br><span class="line">names.sort(reverse&#x3D;True)</span><br><span class="line">print(names)</span><br></pre></td></tr></table></figure><p>输出:[3, 5, 4]<br>[3, 4, 5]<br>[5, 4, 3]</p><p>使用reverse函数可以直接对列表进行倒置，sort函数是升序排序的函数，如果想降序排序，<code>sort(revers = True)</code>即可，需要注意的是不管是sort还是reverse都没有返回值所以需要先进行排序再输出。</p><h4 id="通过原列表排序生成新列表"><a href="#通过原列表排序生成新列表" class="headerlink" title="通过原列表排序生成新列表"></a>通过原列表排序生成新列表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; [4, 5, 3]</span><br><span class="line">print(sorted(names))</span><br><span class="line">print(names)</span><br></pre></td></tr></table></figure><p>输出:[3, 4, 5]<br>[4, 5, 3]</p><h4 id="指定不同的元素规则排序"><a href="#指定不同的元素规则排序" class="headerlink" title="指定不同的元素规则排序"></a>指定不同的元素规则排序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; [(&#39;zhangsan&#39;, 4), (&#39;lisi&#39;, 5), (&#39;wangwu&#39;, 3)]</span><br><span class="line">print(sorted(names, key&#x3D;lambda n: n[1]))</span><br></pre></td></tr></table></figure><p>输出:[(‘wangwu’, 3), (‘zhangsan’, 4), (‘lisi’, 5)]</p><p>可以通过对sorted函数里的参数进行限定来使排序按照自己设定的规则排序，如果不设定key参数那么该列表会按照第一个元素来进行排序</p><h3 id="列表-max-min-sum"><a href="#列表-max-min-sum" class="headerlink" title="列表-max,min,sum"></a>列表-max,min,sum</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; [5, 4, 3]</span><br><span class="line">print(max(names))</span><br><span class="line">print(min(names))</span><br><span class="line">print(sum(names))</span><br></pre></td></tr></table></figure><p>输出:5<br>3<br>12</p><p>几种简单的函数可以对列表进行操作，同时需要注意的是在很多函数中只能对只有单一元素的列表进行操作，比如max，min和排序函数不能对同时包含字符串和数字的列表进行操作</p><h3 id="列表-切片操作"><a href="#列表-切片操作" class="headerlink" title="列表-切片操作"></a>列表-切片操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; [5, 4, 3, 2, 1]</span><br><span class="line">print(names[0:3]) #①</span><br><span class="line">print(names[0:3:2]) #②</span><br><span class="line">print(names[-1:1:-1]) #③</span><br></pre></td></tr></table></figure><p>输出:[5, 4, 3]<br>[5, 3]<br>[1, 2, 3]</p><p><code>①[0:3]代表提取列表中下标0-3的元素</code><br><code>②[0:3:2]代表提取列表中下标0-3的元素，步数为2</code><br><code>③[-1:1:-1]代表提取列表中-1 -1的元素步数为-1(负号的意思就是相反，-1也就是倒数第一个元素)</code></p><h4 id="切片总结"><a href="#切片总结" class="headerlink" title="切片总结"></a>切片总结</h4><p><code>格式为a[start:end:step]，取子串的时候不包括end</code><br><code>当start &gt; end时取空串</code><br><code>空的strat和end取全部</code><br><code>可以使用None代替空的start</code></p><h3 id="列表-复制and推导式"><a href="#列表-复制and推导式" class="headerlink" title="列表-复制and推导式"></a>列表-复制and推导式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; [5, 4, 3, 2, 1]</span><br><span class="line">names_2 &#x3D; names[:]  #①</span><br><span class="line"></span><br><span class="line">nums &#x3D; list(range(100))</span><br><span class="line">sq_nums &#x3D; [n*n for n in nums if n%3&#x3D;&#x3D;0] #② </span><br><span class="line"></span><br></pre></td></tr></table></figure><p><code>①对列表切片进行复制列表</code><br><code>②使用了一个推导式来产生新的列表，推导式的格式为[参数变化 for 参数 in 列表 if 筛选条件]</code></p><p>上面这个例子中使用的推导式的含义就是:用n来代表nums中每个参数并筛选出能被3整除的数，将这些数进行幂次运算得出新列表</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;列表-修改元素&quot;&gt;&lt;a href=&quot;#列表-修改元素&quot; class=&quot;headerlink&quot; title=&quot;列表-修改元素&quot;&gt;&lt;/a&gt;列表-修改元素&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=</summary>
+      
+    
+    
+    
+    
+    <category term="python_ds" scheme="https://dcher-blue.github.io/tags/python-ds/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python_list</title>
+    <link href="https://dcher-blue.github.io/2021/02/27/python_6/"/>
+    <id>https://dcher-blue.github.io/2021/02/27/python_6/</id>
+    <published>2021-02-27T14:33:54.000Z</published>
+    <updated>2021-03-30T11:27:33.716Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h3 id="列表的建立"><a href="#列表的建立" class="headerlink" title="列表的建立"></a>列表的建立</h3><p>列表是有序的，下面是建立列表的第一种方法</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; [&#39;zhangsan&#39;, &#39;lisi&#39;, &#39;wangwu&#39;]</span><br><span class="line">print(names)</span><br></pre></td></tr></table></figure><p>输出:[‘zhangsan’, ‘lisi’, ‘wangwu’]</p><p>列表的建立还可以用另一种方法</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; list()#创建了一个空列表</span><br><span class="line">names &#x3D; list(range(8))</span><br><span class="line">print(names)</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>输出:[0, 1, 2, 3, 4, 5, 6, 7]</p><p>在第二种方法中list内的参数可以是任意的iterable类参数</p><h3 id="列表添加元素"><a href="#列表添加元素" class="headerlink" title="列表添加元素"></a>列表添加元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; []</span><br><span class="line">names.append(&#39;python&#39;)</span><br><span class="line">names.append(&#39;java&#39;)</span><br><span class="line">names.append(&#39;c++&#39;)</span><br><span class="line">print(names)</span><br></pre></td></tr></table></figure><p>输出： [‘python’, ‘java’, ‘c++’]<br>上面这个例子中通过append方法直接向列表中添加元素，这是第一种方法，在列表的结尾添加</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; []</span><br><span class="line">names.append(&#39;python&#39;)</span><br><span class="line">names.append(&#39;java&#39;)</span><br><span class="line">names.append(&#39;c++&#39;)</span><br><span class="line">names.insert(2,&#39;php&#39;)</span><br><span class="line">print(names)</span><br></pre></td></tr></table></figure><p>输出:[‘python’, ‘java’, ‘php’, ‘c++’]<br>在这个例子中是使用了insert方法在列表的中间某一位置插入元素，第一个参数是插入的位置，第二个参数则是需要插入的元素</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">numbers &#x3D; [&#39;5&#39;, &#39;4&#39;, &#39;3&#39;]</span><br><span class="line">names.append(numbers)</span><br><span class="line">print(names)</span><br></pre></td></tr></table></figure><p>输出:[‘python’, ‘java’, ‘php’, ‘c++’, [‘5’, ‘4’, ‘3’]]</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">numbers &#x3D; [&#39;5&#39;, &#39;4&#39;, &#39;3&#39;]</span><br><span class="line">names.extend(numbers)</span><br><span class="line">print(names)</span><br></pre></td></tr></table></figure><p>输出:[‘python’, ‘java’, ‘php’, ‘c++’, ‘5’, ‘4’, ‘3’]</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">numbers &#x3D; [&#39;5&#39;, &#39;4&#39;, &#39;3&#39;]</span><br><span class="line">names +&#x3D; numbers</span><br><span class="line">print(names)</span><br></pre></td></tr></table></figure><p>输出:[‘python’, ‘java’, ‘php’, ‘c++’, ‘5’, ‘4’, ‘3’]</p><p>上面这个三个例子充分说明了extend方法的作用，因为在python中可以向列表添加任意元素，所以第一个例子中使用append方法会直接向原列表中添加一个列表，第二个例子中使用了extend方法则是把新建列表的元素添加进去，第三个例子中说明列表是可以直接相加减的</p><h3 id="列表的删除"><a href="#列表的删除" class="headerlink" title="列表的删除"></a>列表的删除</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; [&#39;5&#39;, &#39;4&#39;, &#39;3&#39;]</span><br><span class="line">del names[2]</span><br><span class="line">print(names)</span><br></pre></td></tr></table></figure><p>输出:[‘5’, ‘4’]<br>可以直接通过python自带的操作符del来按照列表下标来删除元素</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; [&#39;5&#39;, &#39;4&#39;, &#39;3&#39;]</span><br><span class="line">names.pop()</span><br><span class="line">print(names)</span><br><span class="line"></span><br><span class="line">numbers &#x3D; [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;]</span><br><span class="line">numbers.pop(1)</span><br><span class="line">print(numbers)</span><br><span class="line"></span><br><span class="line">sex &#x3D; [&#39;boy&#39;, &#39;girl&#39;]</span><br><span class="line">s &#x3D; sex.pop(1)</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure><p>输出:[‘5’, ‘4’]<br>     [‘1’, ‘3’]<br>     girl<br>上面这个例子中使用了pop方法，第一个例子中说明了pop方法默认删除的是列表尾的元素，pop方法也可以直接按照下标来删除元素。 在第三个方法中，pop有了一个返回值s<br>输出s以后发现正是删除的那个元素，所以pop方法和del不同，del是直接删除，而pop是将元素从列表中提取出来</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">names &#x3D; [&#39;5&#39;, &#39;4&#39;, &#39;3&#39;, &#39;4&#39;]</span><br><span class="line">names.remove(&#39;4&#39;)</span><br><span class="line">print(names)</span><br></pre></td></tr></table></figure><p>输出:[‘5’, ‘3’, ‘4’]</p><p>在上面这个例子中使用了，remove方法来按元素删除，但是需要注意的是使用remove只会删除列表中第一个符合的元素。但是如果列表没有所要删除的元素，就会报错，可以使用一段简单的代码来防止报错</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if &#39;4&#39; in names:</span><br><span class="line">names.remove()</span><br></pre></td></tr></table></figure><p>这样就可以了</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;列表&quot;&gt;&lt;a href=&quot;#列表&quot; class=&quot;headerlink&quot; title=&quot;列表&quot;&gt;&lt;/a&gt;列表&lt;/h2&gt;&lt;h3 id=&quot;列表的建立&quot;&gt;&lt;a href=&quot;#列表的建立&quot; class=&quot;headerlink&quot; title=&quot;列表的建立&quot;&gt;&lt;/a&gt;列表的建</summary>
+      
+    
+    
+    
+    
+    <category term="python_ds" scheme="https://dcher-blue.github.io/tags/python-ds/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>正则表达式_3</title>
+    <link href="https://dcher-blue.github.io/2021/02/26/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F-3/"/>
+    <id>https://dcher-blue.github.io/2021/02/26/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F-3/</id>
+    <published>2021-02-26T10:20:40.000Z</published>
+    <updated>2021-03-01T11:19:02.986Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Python中re模块的方法"><a href="#Python中re模块的方法" class="headerlink" title="Python中re模块的方法"></a>Python中re模块的方法</h2><h3 id="search方法"><a href="#search方法" class="headerlink" title="search方法"></a>search方法</h3><p>查找符合模式的字符，只返回第一个，返回的是一个match对象</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line"></span><br><span class="line">text &#x3D; &#39;座机号码为:0451-89995006&#39;</span><br><span class="line">m &#x3D; re.search(r&#39;(\d&#123;4&#125;)-(\d&#123;8&#125;)&#39;,text)</span><br></pre></td></tr></table></figure><h3 id="match方法"><a href="#match方法" class="headerlink" title="match方法"></a>match方法</h3><p>返回的是一个match对象，且必须从头开始匹配和search相似</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line"></span><br><span class="line">text &#x3D; &#39;ABC,WWW,ADS&#39;</span><br><span class="line">m &#x3D; re.match(r&#39;WWW&#39;,text)</span><br></pre></td></tr></table></figure><p>上面这个例子返回的是None 因为match必须从头开始匹配<br>m = re.search(r’^WWW’,text)该条语句等于用match</p><h3 id="findall方法"><a href="#findall方法" class="headerlink" title="findall方法"></a>findall方法</h3><p>返回所有匹配的字符串列表</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line"></span><br><span class="line">text &#x3D; &#39;座机号码为:0451-89995006,0451-89995006&#39;</span><br><span class="line">m &#x3D; re.findall(r&#39;(\d&#123;4&#125;)-(\d&#123;8&#125;)&#39;,text)</span><br><span class="line">print(m)</span><br></pre></td></tr></table></figure><p>上面的这个例子最后返回的结果为[(‘0451’,’89995006’),(‘0451’,’89995006’)]</p><h3 id="finditer方法"><a href="#finditer方法" class="headerlink" title="finditer方法"></a>finditer方法</h3><p>返回一个迭代，其中包含所有匹配，也就是Match对象</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line"></span><br><span class="line">text &#x3D; &#39;座机号码为:0451-89995006,0451-89995006&#39;</span><br><span class="line">it &#x3D; re.finditer(r&#39;(\d&#123;4&#125;)-(\d&#123;8&#125;)&#39;,text)</span><br><span class="line">for m in it:</span><br><span class="line">    print(m)</span><br></pre></td></tr></table></figure><p>返回的结果为:<br>&lt;re.Match object; span=(6, 19), match=’0451-89995006’&gt;<br>&lt;re.Match object; span=(20, 33), match=’0451-89995006’&gt;</p><h3 id="sub方法"><a href="#sub方法" class="headerlink" title="sub方法"></a>sub方法</h3><p>替换匹配的字符串，返回替换完成的文本</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line"></span><br><span class="line">text &#x3D; &#39;ABC,WWW,ADS&#39;</span><br><span class="line">m &#x3D; re.sub(r&#39;WWW&#39;,&#39;***&#39;,text)</span><br><span class="line">print(m)</span><br></pre></td></tr></table></figure><p>返回值为:ABC,***,ADS</p><h3 id="subn方法"><a href="#subn方法" class="headerlink" title="subn方法"></a>subn方法</h3><p>替换匹配的字符串，返回替换完成的文本和替换的次数<br>和sub相似 但是多返回一个替换的次数</p><h3 id="split方法"><a href="#split方法" class="headerlink" title="split方法"></a>split方法</h3><p>用匹配表达式的字符串做分隔符分隔原字符串</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line"></span><br><span class="line">text &#x3D; &#39;ABC, DSF? TQEW!WWW&#39;</span><br><span class="line">m &#x3D; re.split(r&#39;\s*[,?!]\s*&#39;,text)</span><br><span class="line">print(m)</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>返回值为:[‘ABC’, ‘DSF’, ‘TQEW’, ‘WWW’]   </p><h2 id="compile方法"><a href="#compile方法" class="headerlink" title="compile方法"></a>compile方法</h2><p>把正则表达式编译成一个对象，方便后面使用,了解了再码</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;Python中re模块的方法&quot;&gt;&lt;a href=&quot;#Python中re模块的方法&quot; class=&quot;headerlink&quot; title=&quot;Python中re模块的方法&quot;&gt;&lt;/a&gt;Python中re模块的方法&lt;/h2&gt;&lt;h3 id=&quot;search方法&quot;&gt;&lt;a href</summary>
+      
+    
+    
+    
+    
+    <category term="python_re" scheme="https://dcher-blue.github.io/tags/python-re/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>正则表达式_2</title>
+    <link href="https://dcher-blue.github.io/2021/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F_2/"/>
+    <id>https://dcher-blue.github.io/2021/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F_2/</id>
+    <published>2021-02-25T12:21:22.000Z</published>
+    <updated>2021-02-28T08:51:27.720Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="深入了解python中的正则表达式"><a href="#深入了解python中的正则表达式" class="headerlink" title="深入了解python中的正则表达式"></a>深入了解python中的正则表达式</h2><p>首先要扳正之前第一篇里所写的一个问题先看一个例子</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line"></span><br><span class="line">text &#x3D; &#39;这是一段文字和数字混合:123456一三五七九1579&#39;</span><br><span class="line">print(re.findall(r&#39;中午一三五七九&#39;,text))</span><br><span class="line">print(re.findall(r&#39;[中午一三五七九]&#39;,text))</span><br></pre></td></tr></table></figure><p>上面这个例子中两句要查找的字符串一个用了一个[]括起来另一个则没有<br>那么[]的作用究竟是什么呢？<br>不妨来看看这两局print的输出都是什么：<br>[]<br>[‘一’, ‘一’, ‘三’, ‘五’, ‘七’, ‘九’]<br>看到这个输出结果想必就明白了[]的作用了，当使用[]时代表[]中字符串任意符合即被选取出来,但是如果没有使用[]那么所查找的字符串中必须和要查找的字符串完全符合才可以被查找出，这就是[]的作用</p><h2 id="写正则表达式的步骤"><a href="#写正则表达式的步骤" class="headerlink" title="写正则表达式的步骤"></a>写正则表达式的步骤</h2><p><code>1.确定包含了几个子模式</code><br><code>2.各个子模式的字符分类是什么</code><br><code>3.各个子模式是如何重复(或者说字符的数量)</code><br><code>4.是否有外部位置限制</code><br><code>5.是否有内部制约关系</code></p><p>以上就是书写正则表达式的五个步骤，假设要查找一个座机号:0451-89523232-9563<br>开始分析这个座机号<br><code>1.包含的子模式:&#39;0541&#39;,&#39;89523232&#39;,&#39;9563&#39;，这三个子模式用&#39;-&#39;连接</code><br><code>2.每个子模式的字符分类：都是数字类型使用\d</code><br><code>3.第一个子模式是\d&#123;4&#125;, 第二个子模式是\d&#123;8&#125;, 第三个子模式是\d&#123;4&#125;</code><br><code>4.没有外部位置限制</code><br><code>5.也没有内部制约关系</code><br>这样就分析出这个正则表达式的规则了也就是’\d{4}-\d{8}-\d{4}’</p><h2 id="语法规则"><a href="#语法规则" class="headerlink" title="语法规则"></a>语法规则</h2><h3 id="语法规则——字符类别"><a href="#语法规则——字符类别" class="headerlink" title="语法规则——字符类别"></a>语法规则——字符类别</h3><p><code>1.字符常量:abc123</code><br><code>2.数字字符:\d</code><br><code>3.非数字字符:\D</code><br><code>4.空格:\s</code><br><code>5.非空格:\S</code><br><code>6.任意字母数字下划线字符:\w</code><br><code>7.除字母数字下划线字符字符：\W</code><br><code>8.[abcf]：代表取abcf任意字符</code><br><code>9.[a-e]：范围：从a到e中任意一个字符</code><br><code>10.[^a-d]：取反，除了a到d中的任意一个字符</code><br><code>11.[\b]：退格符号(Backspace)</code><br><code>12. . :除了换行\n之外的任意一个字符</code></p><h3 id="语法规则——量词"><a href="#语法规则——量词" class="headerlink" title="语法规则——量词"></a>语法规则——量词</h3><p><code>1.*:0或多个</code><br><code>2.+:1或多个</code><br><code>3.?:0或1个</code><br><code>4.&#123;2&#125;:2个</code><br><code>5.&#123;2,5&#125;:2到5个</code><br><code>6.&#123;2,&#125;:至少2个</code><br><code>7.&#123;,5&#125;:最多5个</code></p><h3 id="语法规则——组合"><a href="#语法规则——组合" class="headerlink" title="语法规则——组合"></a>语法规则——组合</h3><p><code>1.|:或 多种子模式满足其一即可</code><br><code>2.():分组，比如:abc&#123;3&#125;代表abccc, (abc)&#123;2&#125;代表abcabc</code></p><h3 id="语法规则——位置"><a href="#语法规则——位置" class="headerlink" title="语法规则——位置"></a>语法规则——位置</h3><p><code>1.^:字符串开头</code><br><code>2.\A:字符串开头，忽略m标记</code><br><code>3.&amp;:字符串行尾</code><br><code>4.\Z:字符串行尾，忽略m标记</code><br><code>5.\b:单词边界</code><br><code>6.\B:非单词边界</code><br><code>7.(?=...)：匹配...出现在之后的位置</code><br><code>8.(?!...): 匹配...不出现在之后的位置</code><br><code>9.(?&lt;=...): 匹配...出现在之前的位置</code><br><code>10.(?&lt;!...): 匹配...不出现在之前的位置</code><br><code>11.(?()|): 条件语句</code></p><h3 id="语法规则——分组"><a href="#语法规则——分组" class="headerlink" title="语法规则——分组"></a>语法规则——分组</h3><p><code>1.(...):捕获一个组</code><br><code>2.(?P&lt;Y&gt;...):捕获组名为Y</code><br><code>3.(?:...):不捕获组</code><br><code>4.\Y:匹配第Y个匹配到的组</code><br><code>5.(?P=Y):匹配名为Y的组</code><br><code>6.(?#...):注释</code></p><h3 id="语法规则——标记"><a href="#语法规则——标记" class="headerlink" title="语法规则——标记"></a>语法规则——标记</h3><p><code>1.i:忽略大小写</code><br><code>2.m:^和$匹配行首和行尾</code><br><code>3.s:.匹配换行符</code><br><code>4.x:允许空格和注释</code><br><code>5.\L:由当前语言区域决定 \w, \W, \b, \B和大小写敏感匹配</code><br><code>6.\u:Unicode匹配</code><br><code>7.(?iLmsux):在正则表达式中设置标记</code></p><h3 id="语法规则——特殊字符"><a href="#语法规则——特殊字符" class="headerlink" title="语法规则——特殊字符"></a>语法规则——特殊字符</h3><p><code>1.\n:换行符</code><br><code>2.\r:回车符</code><br><code>3.\t:tab符号</code><br><code>4.\YYY：八进制符号YYY</code><br><code>5.\xYY：16进制符号YY</code></p><h3 id="语法规则——替换"><a href="#语法规则——替换" class="headerlink" title="语法规则——替换"></a>语法规则——替换</h3><p><code>1.\g&lt;0&gt;:插入整段匹配</code><br><code>2.\g&lt;Y&gt;:插入匹配Y，Y可以是匹配的名字或者数字</code><br><code>3.\Y:插入名为Y的组</code></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;深入了解python中的正则表达式&quot;&gt;&lt;a href=&quot;#深入了解python中的正则表达式&quot; class=&quot;headerlink&quot; title=&quot;深入了解python中的正则表达式&quot;&gt;&lt;/a&gt;深入了解python中的正则表达式&lt;/h2&gt;&lt;p&gt;首先要扳正之前第一篇</summary>
+      
+    
+    
+    
+    
+    <category term="python_re" scheme="https://dcher-blue.github.io/tags/python-re/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python_5</title>
+    <link href="https://dcher-blue.github.io/2021/02/23/python_5/"/>
+    <id>https://dcher-blue.github.io/2021/02/23/python_5/</id>
+    <published>2021-02-23T09:14:54.000Z</published>
+    <updated>2021-02-28T08:50:41.682Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Menu"><a href="#Menu" class="headerlink" title="Menu"></a>Menu</h2><p>Menu组件用于实现顶级菜单，下拉菜单和弹出菜单</p><h3 id="顶级菜单"><a href="#顶级菜单" class="headerlink" title="顶级菜单"></a>顶级菜单</h3><p>要创建一个顶级菜单，首先要创建一个菜单实例，然后使用add()方法将命令和其他子菜单添加进去</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">from tkinter import *</span><br><span class="line"></span><br><span class="line">root &#x3D; Tk()</span><br><span class="line"></span><br><span class="line">menubar &#x3D; Menu(root)</span><br><span class="line">def copy():</span><br><span class="line">print(&quot;copy&quot;)</span><br><span class="line"></span><br><span class="line">def paste():</span><br><span class="line">print(&quot;paste&quot;)</span><br><span class="line"></span><br><span class="line">menubar.add_command(label&#x3D;&quot;copy&quot;,command&#x3D;copy)</span><br><span class="line">menubar.add_command(label&#x3D;&quot;paste&quot;,command&#x3D;paste)</span><br><span class="line"></span><br><span class="line">root.config(menuu&#x3D;menubar)</span><br><span class="line"></span><br><span class="line">root.mainloop()</span><br></pre></td></tr></table></figure><p>如上所示建立了一个顶级菜单分别为”copy”和”paste”</p><h2 id="选择框"><a href="#选择框" class="headerlink" title="选择框"></a>选择框</h2><h3 id="文本单选框"><a href="#文本单选框" class="headerlink" title="文本单选框"></a>文本单选框</h3><p>用于设置某一个单选按钮为选中的状态，比如默认的情况是选中第一个定义的单选按钮，我们可以通过设置不同的value 来达成单选的目的</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from tkinter import *</span><br><span class="line"></span><br><span class="line">root &#x3D; TK()</span><br><span class="line"></span><br><span class="line">radio_1 &#x3D; Radiobutton(root, text&#x3D;&#39;Java&#39;, value&#x3D;1)</span><br><span class="line">radio_2 &#x3D; Radiobutton(root, text&#x3D;&#39;Python&#39;, value&#x3D;2)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">radio_1.pack()</span><br><span class="line">radio_2.pack()</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><p>这样就在root上设置了一组选项为”Java”和”Python”的单选框</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;Menu&quot;&gt;&lt;a href=&quot;#Menu&quot; class=&quot;headerlink&quot; title=&quot;Menu&quot;&gt;&lt;/a&gt;Menu&lt;/h2&gt;&lt;p&gt;Menu组件用于实现顶级菜单，下拉菜单和弹出菜单&lt;/p&gt;
+&lt;h3 id=&quot;顶级菜单&quot;&gt;&lt;a href=&quot;#顶级菜单&quot; cla</summary>
+      
+    
+    
+    
+    
+    <category term="python_tkinter" scheme="https://dcher-blue.github.io/tags/python-tkinter/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python_4</title>
+    <link href="https://dcher-blue.github.io/2021/02/23/python_4/"/>
+    <id>https://dcher-blue.github.io/2021/02/23/python_4/</id>
+    <published>2021-02-23T07:53:31.000Z</published>
+    <updated>2021-02-28T08:50:49.606Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="文本框组件"><a href="#文本框组件" class="headerlink" title="文本框组件"></a>文本框组件</h2><p>Tkinter模块中已经学习的函数再码字复习一下</p><h3 id="Tk"><a href="#Tk" class="headerlink" title="Tk"></a>Tk</h3><p>相当于创建了一个窗口，<br>root = Tk() #即建立一个名为root的主窗口也就是下面各个控件的父容器</p><h3 id="Frame"><a href="#Frame" class="headerlink" title="Frame"></a>Frame</h3><p>Frame控件是用来在屏幕上显示一个矩形区域。格式为：a = Frame(master, option, …)<br><code>1.master: 按钮的父容器</code><br><code>2.options: 可选项，即该按钮的可设置的属性，这些选项可以用键 = 值的形式设置， 并以逗号分隔。</code></p><h3 id="Entry"><a href="#Entry" class="headerlink" title="Entry"></a>Entry</h3><p>个人的理解是文本框？，导入了Tkinter模块用Entry建立一个文本框，格式为：b = Entry(master, option, …),其中参数意义与Frame一致</p><h3 id="Button"><a href="#Button" class="headerlink" title="Button"></a>Button</h3><p>Button是按钮组件，可以再Button上放文本或图像，可以与函数相关联，按下按钮时调用函数格式为： c = Button(master, option=value, …)</p><h3 id="Laber"><a href="#Laber" class="headerlink" title="Laber"></a>Laber</h3><p>Laber控件是用以在指定的窗口中显示文本和图像，若是需要显示一行或者多行且不允许用户修改的文本，那么就可以使用Label组件了.<br>格式为：d = Label(maser, option, …)</p><h3 id="grid"><a href="#grid" class="headerlink" title="grid"></a>grid</h3><p>控件的几何状态管理方法的一种，举个简单的例子吧a.grid(row=0, column=0,sticky=’nwes’) 意思和参数一致，需要注意的是grid是以表格的形式塞进区域中，而另一种几何管理方法pack则是直接塞进区域中。</p><h3 id="mainloop"><a href="#mainloop" class="headerlink" title="mainloop"></a>mainloop</h3><p>这是一个在tkinter中用以循环这个窗口程序的方法</p><p>##文本框组件中常用的方法</p><h3 id="delete-get"><a href="#delete-get" class="headerlink" title="delete get"></a>delete get</h3><p>delete的几种用法：<br><code>1. c.delete(10) #删除索引值为10的值</code><br><code>2. c.delete(10,20) #删除索引值从10到20之间的值</code><br><code>3. c.delete(0,END) #删除所有值</code></p><p>get方法是用以获取文件框的值</p><h3 id="command"><a href="#command" class="headerlink" title="command"></a>command</h3><p>相当于响应器，按钮中添加才可以使按钮被按时实现相应目的</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;文本框组件&quot;&gt;&lt;a href=&quot;#文本框组件&quot; class=&quot;headerlink&quot; title=&quot;文本框组件&quot;&gt;&lt;/a&gt;文本框组件&lt;/h2&gt;&lt;p&gt;Tkinter模块中已经学习的函数再码字复习一下&lt;/p&gt;
+&lt;h3 id=&quot;Tk&quot;&gt;&lt;a href=&quot;#Tk&quot; cla</summary>
+      
+    
+    
+    
+    
+    <category term="python_tkinter" scheme="https://dcher-blue.github.io/tags/python-tkinter/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>正则表达式_1</title>
+    <link href="https://dcher-blue.github.io/2021/02/20/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F_1/"/>
+    <id>https://dcher-blue.github.io/2021/02/20/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F_1/</id>
+    <published>2021-02-20T10:31:49.000Z</published>
+    <updated>2021-02-28T08:51:32.872Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="什么是正则表达式？"><a href="#什么是正则表达式？" class="headerlink" title="什么是正则表达式？"></a>什么是正则表达式？</h1><p>正则表达式是一串字符串，个人理解是自己规定的一个规则</p><h2 id="正则表达式的简单使用"><a href="#正则表达式的简单使用" class="headerlink" title="正则表达式的简单使用"></a>正则表达式的简单使用</h2><p>在python中正则表达式需要导入的模块是re</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br></pre></td></tr></table></figure><p>这样就可以开始使用了<br>首先是使用格式:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.match(&#39;规则&#39;,验证内容)</span><br></pre></td></tr></table></figure><p>如上所示这是正则表达式的使用格式，具体的规则是什么样先看一个例子：<br><strong>要在计算器上输入一串数字，设置正则表达式规则验证输入是否合法</strong><br>在设置规则之前首先要明白包含了什么条件，上面例子中所包含的条件有：<br>1.首先是+或-开头，可以有也可以没有<br>2.包含了1个或多个数字<br>3.可以有小数点也可以没有<br>4.小数点后可以有0到多个数字</p><p>明确了包含的规则以后就该尝试应用了</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line"></span><br><span class="line">a &#x3D; input()</span><br><span class="line"></span><br><span class="line">def validate_input(s):</span><br><span class="line">reg &#x3D; &#39;^[+-]?[\d]+[.]?[\d]*$&#39;</span><br><span class="line">r &#x3D; re.match(reg,s)</span><br><span class="line">return r</span><br><span class="line"></span><br><span class="line">is_valid &#x3D; validate_input(a)</span><br><span class="line"></span><br><span class="line">if(is_valid):</span><br><span class="line">print(&#39;yes&#39;)</span><br><span class="line">else:</span><br><span class="line">print(&#39;no&#39;)</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>如上所示 规则被定义成reg = ‘^[+-]?[\d]+[.]?[\d]<em>$’,开始一个一个来弄清楚这些符号<br>1.正则表达式的规则要以’^’开始,同时要以’$’结束<br>2.用以代表不同意义的符号要用[]括起来，上面的\d是代表数字<br>3.？代表一个或者没有，+代表一个或者多个，</em>代表没有或者多个</p><p>这样就弄懂简单的正则表达式的运用了。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;什么是正则表达式？&quot;&gt;&lt;a href=&quot;#什么是正则表达式？&quot; class=&quot;headerlink&quot; title=&quot;什么是正则表达式？&quot;&gt;&lt;/a&gt;什么是正则表达式？&lt;/h1&gt;&lt;p&gt;正则表达式是一串字符串，个人理解是自己规定的一个规则&lt;/p&gt;
+&lt;h2 id=&quot;正则表</summary>
+      
+    
+    
+    
+    
+    <category term="python_re" scheme="https://dcher-blue.github.io/tags/python-re/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C_1</title>
+    <link href="https://dcher-blue.github.io/2020/12/06/C-1/"/>
+    <id>https://dcher-blue.github.io/2020/12/06/C-1/</id>
+    <published>2020-12-06T05:40:02.000Z</published>
+    <updated>2021-02-26T08:55:14.501Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h1><p>这次略微记下自己对C语言中指针的一些感受和体会吧</p><h2 id="指针的定义？"><a href="#指针的定义？" class="headerlink" title="指针的定义？"></a>指针的定义？</h2><p>指针的定义很简单 只需要在你定义的变量前加一个<code>*</code>即可，举个例子吧：<br><code>int *i;</code>这样就定义了一个指针，<code>*</code>我是这样理解的，它就和<code>int</code>这种关键字一样只是定义指针的符号，当然也不全然如此</p><h2 id="指针的概念-amp-amp-初始化"><a href="#指针的概念-amp-amp-初始化" class="headerlink" title="指针的概念&amp;&amp;初始化"></a>指针的概念&amp;&amp;初始化</h2><p>先说说指针的概念吧 ，一个指针变量代表什么呢，让我们先定义一个指针变量并且初始化<code>int *p = &amp;a;</code>,<code>*p</code>是代表什么呢？ 这里面<code>*p</code>代表的是所对应的<code>a</code>的值，而<code>p</code>代表的是指向的变量(也就是a)的地址，所以初始化的时候要用一个<code>&amp;</code>符号</p><h2 id="指针的作用"><a href="#指针的作用" class="headerlink" title="指针的作用"></a>指针的作用</h2><p>因为接触的属实不是很多，举个简单的例子吧：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">void f1(int *p)</span><br><span class="line">&#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">int *i &#x3D; &amp;a;</span><br><span class="line">fi(&amp;a); </span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>如图只是一个未完成的程序 不过需要的东西已经列出了，主函数main()调用了一次f1()函数,传入f1()的实参为<code>&amp;a</code>是一个地址，f1()用来接收的形参也是一个指针类型的变量。 废话了这么多为什么要这么写？ 因为正常情况下是无法通过在主函数中调用子函数传参，然后通过子函数改变主函数的值的，但是使用了指针变量就不一样了，传入的是变量的地址，而在主函数中改变的也是同样地址中的值，所以在子函数中改变子函数的值，当然可能这只是他的作用其一而已 但是这不妨碍用这个例子来简单的了解指针</p><h2 id="二级指针"><a href="#二级指针" class="headerlink" title="二级指针"></a>二级指针</h2><p>哈哈哈首先又是一个提问，什么是二级指针？，一级指针是直接定义一个指针变量，二级指针是用另一个定义的指针变量指向原先的指针变量，当然也可以<code>int **p;</code>，我们先明确二级指针的意义，一级指针中存的是所指向的地址，因此二级指针就是所指向的一级指针的地址。</p><h2 id="数组-amp-amp-指针数组？"><a href="#数组-amp-amp-指针数组？" class="headerlink" title="数组&amp;&amp;指针数组？"></a>数组&amp;&amp;指针数组？</h2><p>首先让我们定义一个指针数组好了：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int *i &#x3D; a[5];</span><br></pre></td></tr></table></figure><p>如上所示一个指针数组就定义完毕了，那么有一个问题为什么之前在定义指针的时候用到了取地址符<code>&amp;</code>而这次定义指针数组却没有呢？<br>原来当定义一个指针指向的是一个数组的时候不管是字符串数组还是其他，指针指向的不是整个数组的全部地址(当然也不能),这时候指针指向的是该数组的首地址。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;指针&quot;&gt;&lt;a href=&quot;#指针&quot; class=&quot;headerlink&quot; title=&quot;指针&quot;&gt;&lt;/a&gt;指针&lt;/h1&gt;&lt;p&gt;这次略微记下自己对C语言中指针的一些感受和体会吧&lt;/p&gt;
+&lt;h2 id=&quot;指针的定义？&quot;&gt;&lt;a href=&quot;#指针的定义？&quot; class=&quot;</summary>
+      
+    
+    
+    
+    
+    <category term="C_指针" scheme="https://dcher-blue.github.io/tags/C-%E6%8C%87%E9%92%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GLCM_2</title>
+    <link href="https://dcher-blue.github.io/2020/12/04/GLCM-2/"/>
+    <id>https://dcher-blue.github.io/2020/12/04/GLCM-2/</id>
+    <published>2020-12-04T05:54:55.000Z</published>
+    <updated>2020-12-17T08:30:36.056Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="GLCM衍生出的统计量"><a href="#GLCM衍生出的统计量" class="headerlink" title="GLCM衍生出的统计量"></a>GLCM衍生出的统计量</h1><p>灰度共生矩阵有14个特征统计量，因为我的实验中只用到了其中的六个统计量，就不赘述其他，以下为所用的统计量<br><code>1.contrast(对比度)</code><br><code>2.dissimilarity(差异性)</code><br><code>3.homogen eity(同质性)</code><br><code>4.energy(能量)</code><br><code>5.correlation(相关性)</code><br><code>6.ASM(ASM能量)</code></p><h2 id="contrast-对比度"><a href="#contrast-对比度" class="headerlink" title="contrast(对比度)"></a>contrast(对比度)</h2><p>对比度直接反映了某个像素值以及该领域像素值的亮度对比情况。若是偏离对角线的元素有较大值，即图像值变化很快，则对比度就会有较大的取值。<br>其中反应了图像的清晰度和纹理沟纹深浅的程度，举个例子：<code>纹理沟纹越深，其对比度就越大，视觉效果越清晰。反之，对比度小，则沟纹浅，效果模糊</code><br><code>灰度差</code>即对比度大的像素对越多，这个值越大。<br>灰度共生矩阵中远离对角线的元素值越大，对比度也就越大</p><h2 id="ASM-ASM能量"><a href="#ASM-ASM能量" class="headerlink" title="ASM(ASM能量)"></a>ASM(ASM能量)</h2><p>如果灰度共生矩阵中的值集中在了一起(比如对连续灰度值图像，值集中在偏离对角线的位置),那么ASM有较大，若G中的值分布较均匀(比如噪声严重的图像),则ASM有较小的值<br>如果<code>共生矩阵的所有值均相等，则ASM值小。如果其中一些值大而其他值小，则ASM值大</code>，如果共生矩阵中元素集中分布时，ASM值大<br>ASM值大表明一种较均一和规则变化的纹理模式</p><h2 id="correlation-相关性"><a href="#correlation-相关性" class="headerlink" title="correlation(相关性)"></a>correlation(相关性)</h2><p>相关性反应了图像纹理的一致性，如果图像中有水平方向纹理，则水平方向矩阵的相关性大于其余矩阵相关性的值。<br>相关性用以度量空间灰度共生矩阵元素在行或列方向上的相似程度，因此，相关值大小反映了图像中局部灰度相关性。当<code>矩阵元素值均匀相等时，相关值就大，如果矩阵元素值相差大那么相关值小</code></p><h2 id="energy-能量"><a href="#energy-能量" class="headerlink" title="energy(能量)"></a>energy(能量)</h2><p><code>能量就是灰度共生矩阵元素值的平方和</code>，能量也反映了图像的清晰度和纹理沟纹</p><p>坏起来了 剩下的两周之内在最后分类器做完以后再编辑了</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;GLCM衍生出的统计量&quot;&gt;&lt;a href=&quot;#GLCM衍生出的统计量&quot; class=&quot;headerlink&quot; title=&quot;GLCM衍生出的统计量&quot;&gt;&lt;/a&gt;GLCM衍生出的统计量&lt;/h1&gt;&lt;p&gt;灰度共生矩阵有14个特征统计量，因为我的实验中只用到了其中的六个统计</summary>
+      
+    
+    
+    
+    
+    <category term="GlCM" scheme="https://dcher-blue.github.io/tags/GlCM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GLCM_1</title>
+    <link href="https://dcher-blue.github.io/2020/12/01/GLCM_1/"/>
+    <id>https://dcher-blue.github.io/2020/12/01/GLCM_1/</id>
+    <published>2020-12-01T14:12:53.000Z</published>
+    <updated>2021-03-30T11:33:10.892Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="灰度共生矩阵-GLCM"><a href="#灰度共生矩阵-GLCM" class="headerlink" title="灰度共生矩阵-GLCM"></a>灰度共生矩阵-GLCM</h1><p>哈哈哈哈哈怎么有奇奇怪怪的东西加入了博客里，没办法这也是学习的一部分<br>先说说什么是灰度共生矩阵吧，<br>灰度共生矩阵是用来对图像做纹理特征提取的一种统计分析方法<br>他的历史就不说了哈哈哈哈还是主要了解用法和代码实现</p><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>通过计算灰度图像得到它的共生矩阵，然后再计算所得到的共生矩阵的部分特征值，来分别代表图像的某些纹理特征。灰度共生矩阵能反映图像灰度关于方向、相邻间隔、变化幅度等综合信息，它是分析图像的局部模式和它们排列规则的基础。<br>`<br>取图像(N×N)中任意一点 （x，y）及偏离它的另一点 （x+a，y+b），设该点对的灰度值为 （g1，g2）。令点（x，y） 在整个画面上移动，则会得到各种 （g1，g2）值，设灰度值的级数为 k，则（g1，g2） 的组合共有 k 的平方种。对于整个画面，统计出每一种 （g1，g2）值出现的次数，然后排列成一个方阵，再用（g1，g2） 出现的总次数将它们归一化为出现的概率P（g1，g2） ，这样的方阵称为灰度共生矩阵。距离差分值（a，b） 取不同的数值组合，可以得到不同情况下的联合概率矩阵。（a，b） 取值要根据纹理周期分布的特性来选择，对于较细的纹理，选取（1，0）、（1，1）、（2，0）等小的差分值。<br>当 a=1，b=0时，像素对是水平的，即0度扫描；当a=0，b=1 时，像素对是垂直的，即90度扫描；当 a=1，b=1时，像素对是右对角线的，即45度扫描；当 a=-1，b=1时，像素对是左对角线，即135度扫描。</p><p>`<br>。。。。看起来实际上还是有些深奥，直接看概念来理解真的很难，下面来通过例子理解</p><h2 id="实例理解GLCM"><a href="#实例理解GLCM" class="headerlink" title="实例理解GLCM"></a>实例理解GLCM</h2><p>了解灰度共生矩阵之前要先清楚几个参数的概念：<br><code>1.步距d:选择的像素点与偏离它的另一点的距离，一般d取1</code><br><code>2.方向：两个像素点的空间上的方向，一般只选取0°，45°，90°，135°</code><br><code>3.滑动窗口尺寸：以计算的像素点为中心，取出的待计算矩阵的大小，一般选取3*3，5*5，7*7</code><br><code>4.灰度阶数：像素灰度值大小，一般有256，126，64，32等</code></p><p>好了知道了这几个参数以后就来看看实例吧<br><code>假设有一副图像，我们得到其中的一个像素点的灰度共生矩阵，计算纹理特征值，大小为6*6，灰度被分为4阶(0,1,2,3),如下</code><br><a href="https://sm.ms/image/xHLgAYUBTqW5pwb" target="_blank"><img src="https://i.loli.net/2020/12/01/xHLgAYUBTqW5pwb.png" ></a><br>第一种方向：<br><code>d=1,方向=0°</code></p><p><a href="https://sm.ms/image/eXJtkW9xjshZfUc" target="_blank"><img src="https://i.loli.net/2020/12/01/eXJtkW9xjshZfUc.png" ></a><br>如图选取元素<br>最终得到共生矩阵为:<br><a href="https://sm.ms/image/SP8KlbJNRofTHBd" target="_blank"><img src="https://i.loli.net/2020/12/01/SP8KlbJNRofTHBd.png" ></a></p><p>其他三种方向就是根据角度的不同做出改变啦就不一一举例了</p><h2 id="特征值计算"><a href="#特征值计算" class="headerlink" title="特征值计算"></a>特征值计算</h2><p>得到了图像上每个像素点的共生矩阵以后，可以计算出很多种特征值来表示其纹理特性，哈哈哈实验种用到了<code>角二阶矩（能量），对比度，相关度，熵</code>，其他就不说了！<br><a href="https://sm.ms/image/oJNf9IZzLaKcHBv" target="_blank"><img src="https://i.loli.net/2020/12/01/oJNf9IZzLaKcHBv.png" ></a></p><h2 id="滑动窗口的实现"><a href="#滑动窗口的实现" class="headerlink" title="滑动窗口的实现"></a>滑动窗口的实现</h2><p>通过上文我们可以知道，每个像素点都会有其自身的一个共生矩阵，而我们需要得到整幅图的一个完整特征矩阵来用作纹理分析、模型特征向量输入等。通过对3×3、5×5窗口的滑动，可以得到整幅图像的完整结果。<br>上文举例的是一个滑动窗口，每个滑动窗口都可以计算得到一个特征值（能量、对比度等）。完成一个像素点的计算后，再将中心像素点移动到下一个，再形成一个滑动窗口后重复上一步的计算，遍历完全部的像素点后，就生成了一个由纹理特征值构成的一个纹理特征值矩阵，这个矩阵的维度即原始图像的维度，每个点的值就是原始图像上该点对应的像素点的灰度特征矩阵特征值。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;灰度共生矩阵-GLCM&quot;&gt;&lt;a href=&quot;#灰度共生矩阵-GLCM&quot; class=&quot;headerlink&quot; title=&quot;灰度共生矩阵-GLCM&quot;&gt;&lt;/a&gt;灰度共生矩阵-GLCM&lt;/h1&gt;&lt;p&gt;哈哈哈哈哈怎么有奇奇怪怪的东西加入了博客里，没办法这也是学习的一部分</summary>
+      
+    
+    
+    
+    
+    <category term="python_GLCM" scheme="https://dcher-blue.github.io/tags/python-GLCM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VS CODE_</title>
+    <link href="https://dcher-blue.github.io/2020/12/01/VS-CODE/"/>
+    <id>https://dcher-blue.github.io/2020/12/01/VS-CODE/</id>
+    <published>2020-12-01T07:39:59.000Z</published>
+    <updated>2021-03-22T02:39:44.401Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="关于为什么使用VS-CODE？"><a href="#关于为什么使用VS-CODE？" class="headerlink" title="关于为什么使用VS CODE？"></a>关于为什么使用VS CODE？</h1><p>在还没有接触VS CODE的时候不论是在学习JAVA还是python的过程中<br>使用的工具都是JetBrains公司的开发的工具，哈哈哈哈买不了只能用阉割版<br>而且很麻烦！没有中文 一直都有点苦恼来着 直到今天了解了VS CODE！！<br>就是这个图标！<br><a href="https://sm.ms/image/cKSNHiORWAvmkYP" target="_blank"><img src="https://i.loli.net/2020/12/01/cKSNHiORWAvmkYP.png" /></a></p><h2 id="VS-CODE的优点？？"><a href="#VS-CODE的优点？？" class="headerlink" title="VS CODE的优点？？"></a>VS CODE的优点？？</h2><p>因为是刚刚接触所以可能知道的不是很多了！<br>最最显而易见的优点<code>完全免费</code><br>hhhh的确是一个不错的地方，除此之外还有<code>支持中文</code>,<br>看见别人说其实VSCODE也很占用内存。不过对于我这种初学者来说很好用了！<br>可以限定工作区开启不同的插件，相比pycharm来说占用的内存少很多了<br>而且还有一个优点是<code>启动快</code>，使用pycharm的时候真的是超级超级慢，开一次要等好久，但是vscode几乎一点就开(?)<br>嗯就这么多吧！以后了解的多了随时回来补充.jpg</p><h2 id="关于vs-code中的一些设置"><a href="#关于vs-code中的一些设置" class="headerlink" title="关于vs code中的一些设置"></a>关于vs code中的一些设置</h2><p>说到设置就不得不提语言设置里的支持中文了，中文真的很亲切啊！(咳咳也有可能是我这种丈育学习者对于英语没有那么了解啦233)<br>说了那么多废话就来康康怎么设置的中文8<br>首先点开vscode 使用快捷键<code>ctrl``+``shift``+``p</code> 然后在搜索框中键入language<br>点击<a href="https://sm.ms/image/RCoZ1efqz7bcOd2" target="_blank"><img src="https://i.loli.net/2020/12/01/RCoZ1efqz7bcOd2.png" /></a>选择如图所示，然后显示的就是当前软件拥有的语言，不过默认只有<code>en</code>所以选安装其他语言<br><a href="https://sm.ms/image/m1YC7f9IRWB5AKn" target="_blank"><img src="https://i.loli.net/2020/12/01/m1YC7f9IRWB5AKn.png" /></a>选择你需要的语言就可以了！ 嘿嘿很简单吧</p><h2 id="debug的调试"><a href="#debug的调试" class="headerlink" title="debug的调试"></a>debug的调试</h2><p>在之前的学习中一直都没有接触过这个都是之间看error找错误…..<br>今天接触了一下vscode中的debug调试感觉意外的好用？ 不过目前接触来看好像这个功能设置断点并不能查出Error？只是来查出为什么没有显示出原本应该出来的结果？<br>哈哈哈哈说的好像有点乱 举个栗子吧 如下所示：<br><a href="https://sm.ms/image/adtmoy86T3g1Xnc" target="_blank"><img src="https://i.loli.net/2020/12/01/adtmoy86T3g1Xnc.gif" /></a></p><p>可能看起来还是有些不清晰，简单说说<br>首先要设置断点，这个断点可以随意的设置在代码段的任何地方可以是一个也可以是多个<br><a href="https://sm.ms/image/x7PHBlFV5yKgbXQ" target="_blank"><img src="https://i.loli.net/2020/12/01/x7PHBlFV5yKgbXQ.png" /></a><br>然后按F5或者点工具栏的<code>运行</code>→<code>启动调试</code>进入如下界面<br><a href="https://sm.ms/image/INFZwuErJmbVPUK" target="_blank"><img src="https://i.loli.net/2020/12/01/INFZwuErJmbVPUK.png" /></a><br>在其中选择你需要调试的文件类型，一般来说第一个默认为当前文件类型<br>点击后进入调试模式首先左边显示的是各种变量用于观察程序执行的流程<br><a href="https://sm.ms/image/IiO3uMUkVo58SqG" target="_blank"><img src="https://i.loli.net/2020/12/01/IiO3uMUkVo58SqG.png" /></a><br>然后使用debug调试生成的工具栏开始调试<a href="https://sm.ms/image/NnTr3DQxdi4jqhz" target="_blank"><img src="https://i.loli.net/2020/12/01/NnTr3DQxdi4jqhz.png" /></a>共有六个按键，在这里分别说一下功能<br><code>1.开始每轮的debug调试，遇到断点即停止本次调试</code><br><code>2.单步运行debug调试</code><br><code>3.用以单独进入程序段中某个函数</code><br><code>4.用以单独跳出程序段中某个函数</code><br><code>5.重       启</code><br><code>6.终止debug调试</code></p><p>然后开始运行上面gif中的内容，既然要查出哪里出现了问题那么肯定要选取关键的调试值先选取<code>3 5 15</code>  在<code>3</code> <code>5</code>调试的过程中没出现问题，但是到了15这里我们发现遇到<br>第一个<code>if</code>判断语句以后直接判断完毕，所以这里出现的问题是语句的不严谨(?)可以把<br><code>elif(i % 15 == 0)</code>这条语句放到最上面即可</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;关于为什么使用VS-CODE？&quot;&gt;&lt;a href=&quot;#关于为什么使用VS-CODE？&quot; class=&quot;headerlink&quot; title=&quot;关于为什么使用VS CODE？&quot;&gt;&lt;/a&gt;关于为什么使用VS CODE？&lt;/h1&gt;&lt;p&gt;在还没有接触VS CODE的时候不论</summary>
+      
+    
+    
+    
+    
+    <category term="tool" scheme="https://dcher-blue.github.io/tags/tool/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python_3</title>
+    <link href="https://dcher-blue.github.io/2020/11/30/python_3/"/>
+    <id>https://dcher-blue.github.io/2020/11/30/python_3/</id>
+    <published>2020-11-30T14:19:53.000Z</published>
+    <updated>2021-03-01T11:18:50.746Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="有关于global"><a href="#有关于global" class="headerlink" title="有关于global"></a>有关于global</h2><p>通常情况下局部变量就是局部变量，一般无法通过改变局部变量来改变全局变量<br>还是举个栗子8</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">count &#x3D; 8</span><br><span class="line">def f1():</span><br><span class="line">global count</span><br><span class="line">count &#x3D; 10</span><br><span class="line">print(count)</span><br><span class="line"></span><br><span class="line">work()</span><br><span class="line">print(count)</span><br></pre></td></tr></table></figure><p>上面这个栗子最后会输出什么呢？<br>没错没错没错，最后输出的是两个10 因为在F1()函数内通过global将count生效范围变成了全局</p><h2 id="有关变量的小知识"><a href="#有关变量的小知识" class="headerlink" title="有关变量的小知识"></a>有关变量的小知识</h2><p>1.全局变量的作用范围仅限于当前文件<br>2.可以通过以下方式调用别的文件的全局变量</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import 文件名</span><br><span class="line"></span><br><span class="line">print(文件名.变量名)</span><br></pre></td></tr></table></figure><p>3.另一文件的局部变量无法通过任何方式访问<br>4.全局变量可以直接在函数内调用，甚至无需传参<br>5.如果在函数内声明一个同名于全局变量的局部变量，那么在函数内该变量的作用范围变为局部</p><h2 id="如何判断列表是否为空？"><a href="#如何判断列表是否为空？" class="headerlink" title="如何判断列表是否为空？"></a>如何判断列表是否为空？</h2><p>1.可以通过len()函数！具体函数的内容会有新的一个标签？<br>2.直接 if 列表名 即可判断是否为空</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;有关于global&quot;&gt;&lt;a href=&quot;#有关于global&quot; class=&quot;headerlink&quot; title=&quot;有关于global&quot;&gt;&lt;/a&gt;有关于global&lt;/h2&gt;&lt;p&gt;通常情况下局部变量就是局部变量，一般无法通过改变局部变量来改变全局变量&lt;br&gt;还是举</summary>
+      
+    
+    
+    
+    
+    <category term="python_var" scheme="https://dcher-blue.github.io/tags/python-var/"/>
+    
+  </entry>
+  
+</feed>
