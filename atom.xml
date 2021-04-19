@@ -3,11 +3,11 @@
   <title>Nap lovers</title>
   
   <subtitle>漫天星河不及你</subtitle>
-  <link href="https://dcher-blue.github.io/atom.xml" rel="self"/>
+  <link href="https://dcher-blue.github.io/dcher-blue.github.io/atom.xml" rel="self"/>
   
-  <link href="https://dcher-blue.github.io/"/>
+  <link href="https://dcher-blue.github.io/dcher-blue.github.io/"/>
   <updated>2021-04-19T04:25:21.839Z</updated>
-  <id>https://dcher-blue.github.io/</id>
+  <id>https://dcher-blue.github.io/dcher-blue.github.io/</id>
   
   <author>
     <name>蓝色</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>链表</title>
-    <link href="https://dcher-blue.github.io/2021/04/15/%E9%93%BE%E8%A1%A8/"/>
-    <id>https://dcher-blue.github.io/2021/04/15/%E9%93%BE%E8%A1%A8/</id>
+    <link href="https://dcher-blue.github.io/dcher-blue.github.io/2021/04/15/%E9%93%BE%E8%A1%A8/"/>
+    <id>https://dcher-blue.github.io/dcher-blue.github.io/2021/04/15/%E9%93%BE%E8%A1%A8/</id>
     <published>2021-04-15T10:08:55.000Z</published>
     <updated>2021-04-19T04:25:21.839Z</updated>
     
@@ -34,14 +34,14 @@
     
     
     
-    <category term="数据结构" scheme="https://dcher-blue.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    <category term="数据结构" scheme="https://dcher-blue.github.io/dcher-blue.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   
   <entry>
     <title>python_x2</title>
-    <link href="https://dcher-blue.github.io/2021/03/22/python_x2/"/>
-    <id>https://dcher-blue.github.io/2021/03/22/python_x2/</id>
+    <link href="https://dcher-blue.github.io/dcher-blue.github.io/2021/03/22/python_x2/"/>
+    <id>https://dcher-blue.github.io/dcher-blue.github.io/2021/03/22/python_x2/</id>
     <published>2021-03-22T02:39:22.000Z</published>
     <updated>2021-03-22T03:25:30.828Z</updated>
     
@@ -56,14 +56,14 @@
     
     
     
-    <category term="python_def" scheme="https://dcher-blue.github.io/tags/python-def/"/>
+    <category term="python_def" scheme="https://dcher-blue.github.io/dcher-blue.github.io/tags/python-def/"/>
     
   </entry>
   
   <entry>
     <title>python_pygame_1</title>
-    <link href="https://dcher-blue.github.io/2021/03/20/python_pygame_1/"/>
-    <id>https://dcher-blue.github.io/2021/03/20/python_pygame_1/</id>
+    <link href="https://dcher-blue.github.io/dcher-blue.github.io/2021/03/20/python_pygame_1/"/>
+    <id>https://dcher-blue.github.io/dcher-blue.github.io/2021/03/20/python_pygame_1/</id>
     <published>2021-03-20T08:26:44.000Z</published>
     <updated>2021-03-20T14:51:05.963Z</updated>
     
@@ -78,14 +78,14 @@
     
     
     
-    <category term="pygame" scheme="https://dcher-blue.github.io/tags/pygame/"/>
+    <category term="pygame" scheme="https://dcher-blue.github.io/dcher-blue.github.io/tags/pygame/"/>
     
   </entry>
   
   <entry>
     <title>python_pygame</title>
-    <link href="https://dcher-blue.github.io/2021/03/05/python_pygame/"/>
-    <id>https://dcher-blue.github.io/2021/03/05/python_pygame/</id>
+    <link href="https://dcher-blue.github.io/dcher-blue.github.io/2021/03/05/python_pygame/"/>
+    <id>https://dcher-blue.github.io/dcher-blue.github.io/2021/03/05/python_pygame/</id>
     <published>2021-03-05T12:26:45.000Z</published>
     <updated>2021-03-20T08:27:42.845Z</updated>
     
@@ -100,14 +100,14 @@
     
     
     
-    <category term="pygame" scheme="https://dcher-blue.github.io/tags/pygame/"/>
+    <category term="pygame" scheme="https://dcher-blue.github.io/dcher-blue.github.io/tags/pygame/"/>
     
   </entry>
   
   <entry>
     <title>python_dict</title>
-    <link href="https://dcher-blue.github.io/2021/03/01/python_x1/"/>
-    <id>https://dcher-blue.github.io/2021/03/01/python_x1/</id>
+    <link href="https://dcher-blue.github.io/dcher-blue.github.io/2021/03/01/python_x1/"/>
+    <id>https://dcher-blue.github.io/dcher-blue.github.io/2021/03/01/python_x1/</id>
     <published>2021-03-01T11:03:10.000Z</published>
     <updated>2021-03-30T11:26:35.522Z</updated>
     
@@ -122,14 +122,14 @@
     
     
     
-    <category term="python_ds" scheme="https://dcher-blue.github.io/tags/python-ds/"/>
+    <category term="python_ds" scheme="https://dcher-blue.github.io/dcher-blue.github.io/tags/python-ds/"/>
     
   </entry>
   
   <entry>
     <title>python_set</title>
-    <link href="https://dcher-blue.github.io/2021/03/01/python_x/"/>
-    <id>https://dcher-blue.github.io/2021/03/01/python_x/</id>
+    <link href="https://dcher-blue.github.io/dcher-blue.github.io/2021/03/01/python_x/"/>
+    <id>https://dcher-blue.github.io/dcher-blue.github.io/2021/03/01/python_x/</id>
     <published>2021-03-01T08:56:06.000Z</published>
     <updated>2021-03-30T11:26:46.081Z</updated>
     
@@ -145,14 +145,14 @@
     
     
     
-    <category term="python_ds" scheme="https://dcher-blue.github.io/tags/python-ds/"/>
+    <category term="python_ds" scheme="https://dcher-blue.github.io/dcher-blue.github.io/tags/python-ds/"/>
     
   </entry>
   
   <entry>
     <title>python_str</title>
-    <link href="https://dcher-blue.github.io/2021/02/28/python_9/"/>
-    <id>https://dcher-blue.github.io/2021/02/28/python_9/</id>
+    <link href="https://dcher-blue.github.io/dcher-blue.github.io/2021/02/28/python_9/"/>
+    <id>https://dcher-blue.github.io/dcher-blue.github.io/2021/02/28/python_9/</id>
     <published>2021-02-28T11:20:08.000Z</published>
     <updated>2021-03-30T11:27:01.453Z</updated>
     
@@ -168,14 +168,14 @@
     
     
     
-    <category term="python_ds" scheme="https://dcher-blue.github.io/tags/python-ds/"/>
+    <category term="python_ds" scheme="https://dcher-blue.github.io/dcher-blue.github.io/tags/python-ds/"/>
     
   </entry>
   
   <entry>
     <title>python_tuple</title>
-    <link href="https://dcher-blue.github.io/2021/02/28/python_8/"/>
-    <id>https://dcher-blue.github.io/2021/02/28/python_8/</id>
+    <link href="https://dcher-blue.github.io/dcher-blue.github.io/2021/02/28/python_8/"/>
+    <id>https://dcher-blue.github.io/dcher-blue.github.io/2021/02/28/python_8/</id>
     <published>2021-02-28T10:59:00.000Z</published>
     <updated>2021-03-30T11:27:08.036Z</updated>
     
@@ -190,14 +190,14 @@
     
     
     
-    <category term="python_ds" scheme="https://dcher-blue.github.io/tags/python-ds/"/>
+    <category term="python_ds" scheme="https://dcher-blue.github.io/dcher-blue.github.io/tags/python-ds/"/>
     
   </entry>
   
   <entry>
     <title>python_list</title>
-    <link href="https://dcher-blue.github.io/2021/02/28/python_7/"/>
-    <id>https://dcher-blue.github.io/2021/02/28/python_7/</id>
+    <link href="https://dcher-blue.github.io/dcher-blue.github.io/2021/02/28/python_7/"/>
+    <id>https://dcher-blue.github.io/dcher-blue.github.io/2021/02/28/python_7/</id>
     <published>2021-02-28T08:49:53.000Z</published>
     <updated>2021-03-30T11:27:25.501Z</updated>
     
@@ -212,14 +212,14 @@
     
     
     
-    <category term="python_ds" scheme="https://dcher-blue.github.io/tags/python-ds/"/>
+    <category term="python_ds" scheme="https://dcher-blue.github.io/dcher-blue.github.io/tags/python-ds/"/>
     
   </entry>
   
   <entry>
     <title>python_list</title>
-    <link href="https://dcher-blue.github.io/2021/02/27/python_6/"/>
-    <id>https://dcher-blue.github.io/2021/02/27/python_6/</id>
+    <link href="https://dcher-blue.github.io/dcher-blue.github.io/2021/02/27/python_6/"/>
+    <id>https://dcher-blue.github.io/dcher-blue.github.io/2021/02/27/python_6/</id>
     <published>2021-02-27T14:33:54.000Z</published>
     <updated>2021-03-30T11:27:33.716Z</updated>
     
@@ -234,14 +234,14 @@
     
     
     
-    <category term="python_ds" scheme="https://dcher-blue.github.io/tags/python-ds/"/>
+    <category term="python_ds" scheme="https://dcher-blue.github.io/dcher-blue.github.io/tags/python-ds/"/>
     
   </entry>
   
   <entry>
     <title>正则表达式_3</title>
-    <link href="https://dcher-blue.github.io/2021/02/26/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F-3/"/>
-    <id>https://dcher-blue.github.io/2021/02/26/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F-3/</id>
+    <link href="https://dcher-blue.github.io/dcher-blue.github.io/2021/02/26/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F-3/"/>
+    <id>https://dcher-blue.github.io/dcher-blue.github.io/2021/02/26/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F-3/</id>
     <published>2021-02-26T10:20:40.000Z</published>
     <updated>2021-03-01T11:19:02.986Z</updated>
     
@@ -256,14 +256,14 @@
     
     
     
-    <category term="python_re" scheme="https://dcher-blue.github.io/tags/python-re/"/>
+    <category term="python_re" scheme="https://dcher-blue.github.io/dcher-blue.github.io/tags/python-re/"/>
     
   </entry>
   
   <entry>
     <title>正则表达式_2</title>
-    <link href="https://dcher-blue.github.io/2021/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F_2/"/>
-    <id>https://dcher-blue.github.io/2021/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F_2/</id>
+    <link href="https://dcher-blue.github.io/dcher-blue.github.io/2021/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F_2/"/>
+    <id>https://dcher-blue.github.io/dcher-blue.github.io/2021/02/25/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F_2/</id>
     <published>2021-02-25T12:21:22.000Z</published>
     <updated>2021-02-28T08:51:27.720Z</updated>
     
@@ -278,14 +278,14 @@
     
     
     
-    <category term="python_re" scheme="https://dcher-blue.github.io/tags/python-re/"/>
+    <category term="python_re" scheme="https://dcher-blue.github.io/dcher-blue.github.io/tags/python-re/"/>
     
   </entry>
   
   <entry>
     <title>python_5</title>
-    <link href="https://dcher-blue.github.io/2021/02/23/python_5/"/>
-    <id>https://dcher-blue.github.io/2021/02/23/python_5/</id>
+    <link href="https://dcher-blue.github.io/dcher-blue.github.io/2021/02/23/python_5/"/>
+    <id>https://dcher-blue.github.io/dcher-blue.github.io/2021/02/23/python_5/</id>
     <published>2021-02-23T09:14:54.000Z</published>
     <updated>2021-02-28T08:50:41.682Z</updated>
     
@@ -301,14 +301,14 @@
     
     
     
-    <category term="python_tkinter" scheme="https://dcher-blue.github.io/tags/python-tkinter/"/>
+    <category term="python_tkinter" scheme="https://dcher-blue.github.io/dcher-blue.github.io/tags/python-tkinter/"/>
     
   </entry>
   
   <entry>
     <title>python_4</title>
-    <link href="https://dcher-blue.github.io/2021/02/23/python_4/"/>
-    <id>https://dcher-blue.github.io/2021/02/23/python_4/</id>
+    <link href="https://dcher-blue.github.io/dcher-blue.github.io/2021/02/23/python_4/"/>
+    <id>https://dcher-blue.github.io/dcher-blue.github.io/2021/02/23/python_4/</id>
     <published>2021-02-23T07:53:31.000Z</published>
     <updated>2021-02-28T08:50:49.606Z</updated>
     
@@ -324,14 +324,14 @@
     
     
     
-    <category term="python_tkinter" scheme="https://dcher-blue.github.io/tags/python-tkinter/"/>
+    <category term="python_tkinter" scheme="https://dcher-blue.github.io/dcher-blue.github.io/tags/python-tkinter/"/>
     
   </entry>
   
   <entry>
     <title>正则表达式_1</title>
-    <link href="https://dcher-blue.github.io/2021/02/20/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F_1/"/>
-    <id>https://dcher-blue.github.io/2021/02/20/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F_1/</id>
+    <link href="https://dcher-blue.github.io/dcher-blue.github.io/2021/02/20/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F_1/"/>
+    <id>https://dcher-blue.github.io/dcher-blue.github.io/2021/02/20/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F_1/</id>
     <published>2021-02-20T10:31:49.000Z</published>
     <updated>2021-02-28T08:51:32.872Z</updated>
     
@@ -347,14 +347,14 @@
     
     
     
-    <category term="python_re" scheme="https://dcher-blue.github.io/tags/python-re/"/>
+    <category term="python_re" scheme="https://dcher-blue.github.io/dcher-blue.github.io/tags/python-re/"/>
     
   </entry>
   
   <entry>
     <title>C_1</title>
-    <link href="https://dcher-blue.github.io/2020/12/06/C-1/"/>
-    <id>https://dcher-blue.github.io/2020/12/06/C-1/</id>
+    <link href="https://dcher-blue.github.io/dcher-blue.github.io/2020/12/06/C-1/"/>
+    <id>https://dcher-blue.github.io/dcher-blue.github.io/2020/12/06/C-1/</id>
     <published>2020-12-06T05:40:02.000Z</published>
     <updated>2021-02-26T08:55:14.501Z</updated>
     
@@ -370,14 +370,14 @@
     
     
     
-    <category term="C_指针" scheme="https://dcher-blue.github.io/tags/C-%E6%8C%87%E9%92%88/"/>
+    <category term="C_指针" scheme="https://dcher-blue.github.io/dcher-blue.github.io/tags/C-%E6%8C%87%E9%92%88/"/>
     
   </entry>
   
   <entry>
     <title>GLCM_2</title>
-    <link href="https://dcher-blue.github.io/2020/12/04/GLCM-2/"/>
-    <id>https://dcher-blue.github.io/2020/12/04/GLCM-2/</id>
+    <link href="https://dcher-blue.github.io/dcher-blue.github.io/2020/12/04/GLCM-2/"/>
+    <id>https://dcher-blue.github.io/dcher-blue.github.io/2020/12/04/GLCM-2/</id>
     <published>2020-12-04T05:54:55.000Z</published>
     <updated>2020-12-17T08:30:36.056Z</updated>
     
@@ -392,14 +392,14 @@
     
     
     
-    <category term="GlCM" scheme="https://dcher-blue.github.io/tags/GlCM/"/>
+    <category term="GlCM" scheme="https://dcher-blue.github.io/dcher-blue.github.io/tags/GlCM/"/>
     
   </entry>
   
   <entry>
     <title>GLCM_1</title>
-    <link href="https://dcher-blue.github.io/2020/12/01/GLCM_1/"/>
-    <id>https://dcher-blue.github.io/2020/12/01/GLCM_1/</id>
+    <link href="https://dcher-blue.github.io/dcher-blue.github.io/2020/12/01/GLCM_1/"/>
+    <id>https://dcher-blue.github.io/dcher-blue.github.io/2020/12/01/GLCM_1/</id>
     <published>2020-12-01T14:12:53.000Z</published>
     <updated>2021-03-30T11:33:10.892Z</updated>
     
@@ -414,14 +414,14 @@
     
     
     
-    <category term="python_GLCM" scheme="https://dcher-blue.github.io/tags/python-GLCM/"/>
+    <category term="python_GLCM" scheme="https://dcher-blue.github.io/dcher-blue.github.io/tags/python-GLCM/"/>
     
   </entry>
   
   <entry>
     <title>VS CODE_</title>
-    <link href="https://dcher-blue.github.io/2020/12/01/VS-CODE/"/>
-    <id>https://dcher-blue.github.io/2020/12/01/VS-CODE/</id>
+    <link href="https://dcher-blue.github.io/dcher-blue.github.io/2020/12/01/VS-CODE/"/>
+    <id>https://dcher-blue.github.io/dcher-blue.github.io/2020/12/01/VS-CODE/</id>
     <published>2020-12-01T07:39:59.000Z</published>
     <updated>2021-03-22T02:39:44.401Z</updated>
     
@@ -436,14 +436,14 @@
     
     
     
-    <category term="tool" scheme="https://dcher-blue.github.io/tags/tool/"/>
+    <category term="tool" scheme="https://dcher-blue.github.io/dcher-blue.github.io/tags/tool/"/>
     
   </entry>
   
   <entry>
     <title>python_3</title>
-    <link href="https://dcher-blue.github.io/2020/11/30/python_3/"/>
-    <id>https://dcher-blue.github.io/2020/11/30/python_3/</id>
+    <link href="https://dcher-blue.github.io/dcher-blue.github.io/2020/11/30/python_3/"/>
+    <id>https://dcher-blue.github.io/dcher-blue.github.io/2020/11/30/python_3/</id>
     <published>2020-11-30T14:19:53.000Z</published>
     <updated>2021-03-01T11:18:50.746Z</updated>
     
@@ -458,7 +458,7 @@
     
     
     
-    <category term="python_var" scheme="https://dcher-blue.github.io/tags/python-var/"/>
+    <category term="python_var" scheme="https://dcher-blue.github.io/dcher-blue.github.io/tags/python-var/"/>
     
   </entry>
   
